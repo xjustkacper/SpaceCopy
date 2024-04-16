@@ -29,8 +29,11 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< Updated upstream
         public Action<GameObject> onEdited;
 
+=======
+>>>>>>> Stashed changes
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -244,7 +247,10 @@ namespace UnityEditor.Tilemaps
         {
             if (GridPaintingState.activeBrushEditor != null && grid != null)
                 GridPaintingState.activeBrushEditor.OnEditStart(grid, brushTarget);
+<<<<<<< Updated upstream
             onEdited?.Invoke(brushTarget);
+=======
+>>>>>>> Stashed changes
         }
 
         protected override void OnEditEnd()
@@ -270,24 +276,37 @@ namespace UnityEditor.Tilemaps
             return true;
         }
 
+<<<<<<< Updated upstream
         protected override Vector2Int ScreenToGrid(Vector2 screenPosition, float zPosition)
+=======
+        protected override Vector2Int ScreenToGrid(Vector2 screenPosition)
+>>>>>>> Stashed changes
         {
             if (tilemap != null)
             {
                 var transform = tilemap.transform;
+<<<<<<< Updated upstream
                 var plane = new Plane(GetGridForward(tilemap), transform.position);
                 var screenLocal = GridEditorUtility.ScreenToLocal(transform, screenPosition, plane);
                 if (GridPaintingState.gridBrushMousePositionAtZ)
                     screenLocal.z = zPosition;
                 var cell = LocalToGrid(tilemap, screenLocal);
+=======
+                Plane plane = new Plane(GetGridForward(tilemap), transform.position);
+                Vector3Int cell = LocalToGrid(tilemap, GridEditorUtility.ScreenToLocal(transform, screenPosition, plane));
+>>>>>>> Stashed changes
                 return new Vector2Int(cell.x, cell.y);
             }
             if (grid != null)
             {
+<<<<<<< Updated upstream
                 var screenLocal = GridEditorUtility.ScreenToLocal(gridTransform, screenPosition, GetGridPlane(grid));
                 if (GridPaintingState.gridBrushMousePositionAtZ)
                     screenLocal.z = zPosition;
                 var cell = LocalToGrid(grid, screenLocal);
+=======
+                Vector3Int cell = LocalToGrid(grid, GridEditorUtility.ScreenToLocal(gridTransform, screenPosition, GetGridPlane(grid)));
+>>>>>>> Stashed changes
                 return new Vector2Int(cell.x, cell.y);
             }
             return Vector2Int.zero;

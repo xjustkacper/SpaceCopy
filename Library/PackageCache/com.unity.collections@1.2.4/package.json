@@ -24,6 +24,10 @@
     "url": "https://github.cds.internal.unity3d.com/unity/dots.git",
     "type": "git",
     "revision": "32d153034bea0703098263469b88c73619422782"
+<<<<<<< Updated upstream
   },
   "_fingerprint": "420c69a340a1a9bd856714736eb8ea50af4311ae"
+=======
+  }
+>>>>>>> Stashed changes
 }

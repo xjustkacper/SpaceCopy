@@ -1,6 +1,9 @@
+<<<<<<< Updated upstream
 using System;
 using UnityEngine;
 using UnityEditor.Toolbars;
+=======
+>>>>>>> Stashed changes
 using UnityEngine.UIElements;
 
 namespace UnityEditor.Tilemaps
@@ -8,6 +11,7 @@ namespace UnityEditor.Tilemaps
     internal class GridPaintPaletteWindowActiveTargets : VisualElement
     {
         const string kUssClassName = "unity-tilepalette-activetargets";
+<<<<<<< Updated upstream
         const string kPopupUssClassName = "unity-tilepalette-activetargets-popup";
         const string kInfoUssClassName = "unity-tilepalette-activetargets-info";
         const string kCreateHintUssClassName = "unity-tilepalette-activetargets-info__create";
@@ -42,6 +46,8 @@ namespace UnityEditor.Tilemaps
             Array.Resize(ref overlayIds, i);
             return overlayIds;
         }
+=======
+>>>>>>> Stashed changes
 
         public GridPaintPaletteWindowActiveTargets()
         {
@@ -49,6 +55,7 @@ namespace UnityEditor.Tilemaps
             TilePaletteOverlayUtility.SetStyleSheet(this);
 
             name = "activeTargetsTilePalette";
+<<<<<<< Updated upstream
 
             var activeTargets = new VisualElement();
             activeTargets.AddToClassList(kPopupUssClassName);
@@ -99,6 +106,10 @@ namespace UnityEditor.Tilemaps
         {
             m_CreateTargetElement.visible = needCreate;
             m_CreateTargetElement.style.position = needCreate ? Position.Relative : Position.Absolute;
+=======
+            Add(new TilePaletteActiveTargetsPopupIcon());
+            Add(new TilePaletteActiveTargetsPopup());
+>>>>>>> Stashed changes
         }
     }
 }

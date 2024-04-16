@@ -12,7 +12,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = "|Paint a filled box with active brush ({0})";
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_Rectangle;
+=======
+            public static string shortcutId = "Grid Painting/Rectangle";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Grid.BoxTool", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 

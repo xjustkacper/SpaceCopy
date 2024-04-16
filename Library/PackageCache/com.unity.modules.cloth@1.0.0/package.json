@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "name": "com.unity.modules.cloth",
   "version": "1.0.0",
   "type": "module",
@@ -9,3 +10,15 @@
     "com.unity.modules.physics": "1.0.0"
   }
 }
+=======
+    "name": "com.unity.modules.cloth",
+    "version": "1.0.0",
+    "type": "module",
+    "displayName": "Cloth",
+    "description": "The Cloth module implements cloth physics simulation through the Cloth component. Scripting API: https://docs.unity3d.com/ScriptReference/UnityEngine.ClothModule.html",
+    "icon": ".icon.png",
+    "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+    }
+}
+>>>>>>> Stashed changes

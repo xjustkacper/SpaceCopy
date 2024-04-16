@@ -3,7 +3,7 @@ guid: 40947ddc2dd4f0d499a92d0f3675c4e8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,10 +20,15 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.timeline@1.8.6/Editor/StyleSheets/Images/Icons/d_TimelineCollapseMarkerButtonDisabled.png.meta
+=======
+  ignoreMipmapLimit: 0
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Items/Checkpoints/Start/Start (Idle).png.meta
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -34,7 +39,11 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: 1
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.timeline@1.8.6/Editor/StyleSheets/Images/Icons/d_TimelineCollapseMarkerButtonDisabled.png.meta
     mipBias: -100
+=======
+    mipBias: 0
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Items/Checkpoints/Start/Start (Idle).png.meta
     wrapU: 1
     wrapV: 1
     wrapW: -1
@@ -46,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -55,10 +64,18 @@ TextureImporter:
   textureType: 2
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.timeline@1.8.6/Editor/StyleSheets/Images/Icons/d_TimelineCollapseMarkerButtonDisabled.png.meta
+=======
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Items/Checkpoints/Start/Start (Idle).png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -70,6 +87,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -82,6 +100,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -97,9 +142,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

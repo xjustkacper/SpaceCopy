@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.timeline@1.8.6/Samples~/GameplaySequenceDemo/Particles/Misc Effects/Textures/DustPuffSmall.png.meta
 guid: 271edbc011d9e03489f73cef81b2d56a
+=======
+guid: e3e6b3d6c57dc7b488e7d1e8be902988
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Traps/Rock Head/Blink (42x42).png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -15,7 +19,11 @@ TextureImporter:
       213: 21300006
     second: SmallDustPuff_3
   externalObjects: {}
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.timeline@1.8.6/Samples~/GameplaySequenceDemo/Particles/Misc Effects/Textures/DustPuffSmall.png.meta
   serializedVersion: 11
+=======
+  serializedVersion: 12
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Traps/Rock Head/Blink (42x42).png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -98,7 +106,37 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.timeline@1.8.6/Samples~/GameplaySequenceDemo/Particles/Misc Effects/Textures/DustPuffSmall.png.meta
     forceMaximumCompressionQuality_BC6H_BC7: 1
+=======
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Traps/Rock Head/Blink (42x42).png.meta
   spriteSheet:
     serializedVersion: 2
     sprites:

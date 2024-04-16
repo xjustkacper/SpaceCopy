@@ -6,6 +6,10 @@ namespace UnityEditor.Tilemaps
     internal class GridPaintPaletteWindowSplitView : VisualElement
     {
         private static readonly string ussClassName = "unity-tilepalette-splitview";
+<<<<<<< Updated upstream
+=======
+        private static readonly string brushesUssClassName = "unity-tilepalette-splitview-brushes";
+>>>>>>> Stashed changes
         private static readonly string splitViewDataKey = "unity-tilepalette-splitview-data";
 
         private const float kMinSplitRatio = 0.3f;
@@ -45,7 +49,11 @@ namespace UnityEditor.Tilemaps
                 m_SplitView.m_Resizer.ApplyDelta(diff);
         }
 
+<<<<<<< Updated upstream
         public GridPaintPaletteWindowSplitView(bool isVerticalOrientation)
+=======
+        public GridPaintPaletteWindowSplitView(EditorWindow editorWindow, bool isVerticalOrientation)
+>>>>>>> Stashed changes
         {
             AddToClassList(ussClassName);
 
@@ -54,7 +62,15 @@ namespace UnityEditor.Tilemaps
 
             m_PaletteElement = new TilePaletteElement();
 
+<<<<<<< Updated upstream
             var brushesElement = new TilePaletteBrushModalElement();
+=======
+            var brushesElement = new VisualElement();
+            brushesElement.AddToClassList(brushesUssClassName);
+            brushesElement.Add(new TilePaletteBrushesPopup());
+            brushesElement.Add(new TilePaletteBrushInspectorElement());
+
+>>>>>>> Stashed changes
             m_SplitView = new TwoPaneSplitView(0, -1, isVerticalOrientation ? TwoPaneSplitViewOrientation.Vertical : TwoPaneSplitViewOrientation.Horizontal);
             m_SplitView.contentContainer.Add(m_PaletteElement);
             m_SplitView.contentContainer.Add(brushesElement);

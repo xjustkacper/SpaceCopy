@@ -9,6 +9,7 @@ namespace UnityEditor.Tilemaps
     /// </summary>
     public static class GridPaletteUtility
     {
+<<<<<<< Updated upstream
         internal enum GridPaletteType
         {
             Rectangle,
@@ -41,6 +42,10 @@ namespace UnityEditor.Tilemaps
             return GridLayout.CellLayout.Rectangle;
         }
 
+=======
+        internal static readonly Vector3 defaultSortAxis = new Vector3(0f, 0f, 1f);
+
+>>>>>>> Stashed changes
         internal static RectInt GetBounds(GameObject palette)
         {
             if (palette == null)

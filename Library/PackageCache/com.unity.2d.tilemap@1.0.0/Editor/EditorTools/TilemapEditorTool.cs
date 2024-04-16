@@ -37,11 +37,15 @@ namespace UnityEditor.Tilemaps
             typeof(BoxTool),
             typeof(PickingTool),
             typeof(EraseTool),
+<<<<<<< Updated upstream
             typeof(FillTool),
             typeof(RotateCounterClockwiseTool),
             typeof(RotateClockwiseTool),
             typeof(FlipXTool),
             typeof(FlipYTool)
+=======
+            typeof(FillTool)
+>>>>>>> Stashed changes
         };
 
         /// <summary>

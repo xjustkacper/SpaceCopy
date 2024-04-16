@@ -36,11 +36,14 @@ namespace UnityEditor.Tilemaps
             set {}
         }
 
+<<<<<<< Updated upstream
         /// <summary>
         /// Whether the Brush is in a state that should be saved for selection.
         /// </summary>
         public virtual bool shouldSaveBrushForSelection => true;
 
+=======
+>>>>>>> Stashed changes
         /// <summary>Callback for painting the GUI for the GridBrush in the Scene view.</summary>
         /// <param name="gridLayout">Grid that the brush is being used on.</param>
         /// <param name="brushTarget">Target of the GridBrushBase::ref::Tool operation. By default the currently selected GameObject.</param>

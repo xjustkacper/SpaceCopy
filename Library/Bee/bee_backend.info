@@ -1,4 +1,9 @@
 {
+<<<<<<< Updated upstream
     "UnityVersion": "2023.2.14f1",
     "BeeBackendHash": "fa13c4937c087fc96df4d83e2749aedd7ef157765f36707791e9340ae44ed67d"
+=======
+    "UnityVersion": "2022.3.10f1",
+    "BeeBackendHash": "b03635e7cf726b6897a9f3bc32eac74c4a28fd903cf3af29f36d0f32136e675c"
+>>>>>>> Stashed changes
 }

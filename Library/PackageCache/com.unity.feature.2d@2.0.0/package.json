@@ -16,6 +16,10 @@
     "com.unity.2d.tilemap": "default",
     "com.unity.2d.tilemap.extras": "default",
     "com.unity.2d.aseprite": "default"
+<<<<<<< Updated upstream
   },
   "_fingerprint": "fb3072e34f70a16fbff938620d39c1dab76c4179"
+=======
+  }
+>>>>>>> Stashed changes
 }

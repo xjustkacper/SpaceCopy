@@ -7,6 +7,7 @@ namespace UnityEditor.Tilemaps
 {
     internal class GridPaintPaletteWindowPreferences
     {
+<<<<<<< Updated upstream
         private static IEnumerable<string> GetSearchWords()
         {
             foreach (var ss in SettingsProvider
@@ -33,6 +34,12 @@ namespace UnityEditor.Tilemaps
         internal static SettingsProvider CreateSettingsProvider()
         {
             var settingsProvider = new SettingsProvider("Preferences/2D/Tile Palette", SettingsScope.User, GetSearchWords())
+=======
+        [SettingsProvider]
+        internal static SettingsProvider CreateSettingsProvider()
+        {
+            var settingsProvider = new SettingsProvider("Preferences/2D/Tile Palette", SettingsScope.User, SettingsProvider.GetSearchKeywordsFromGUIContentProperties<GridPaintPaletteWindowPreferences>())
+>>>>>>> Stashed changes
             {
                 guiHandler = searchContext =>
                 {
@@ -41,7 +48,10 @@ namespace UnityEditor.Tilemaps
                     SceneViewOpenTilePaletteHelper.PreferencesGUI();
                     TilemapPrefabStageHelper.PreferencesGUI();
                     TilemapEditorToolPreferences.PreferencesGUI();
+<<<<<<< Updated upstream
                     GridBrushPickStoreSettingsProvider.PreferencesGUI();
+=======
+>>>>>>> Stashed changes
                 }
             };
             return settingsProvider;

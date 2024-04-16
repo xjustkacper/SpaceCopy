@@ -1,11 +1,17 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+<<<<<<< Updated upstream
 using System.IO;
 using UnityTexture2D = UnityEngine.Texture2D;
 using System.Linq;
 using System.Reflection;
 using UnityEditor.AssetImporters;
+=======
+using UnityTexture2D = UnityEngine.Texture2D;
+using System.Linq;
+using System.Reflection;
+>>>>>>> Stashed changes
 using UnityEngine.UIElements;
 
 namespace UnityEditor.U2D.Sprites
@@ -196,8 +202,11 @@ namespace UnityEditor.U2D.Sprites
         /// <returns>The Sprite object</returns>
         internal Sprite GetSpriteObject(UnityEngine.Object obj)
         {
+<<<<<<< Updated upstream
             if (obj is Sprite)
                 return (Sprite)obj;
+=======
+>>>>>>> Stashed changes
             foreach (var spriteObjectProvider in GetSpriteObjectProvider())
             {
                 try
@@ -239,8 +248,12 @@ namespace UnityEditor.U2D.Sprites
             public static readonly GUIContent applyRevertDialogTitle = EditorGUIUtility.TrTextContent("Unapplied import settings");
             public static readonly GUIContent applyRevertDialogContent = EditorGUIUtility.TrTextContent("Unapplied import settings for '{0}'");
 
+<<<<<<< Updated upstream
             public static readonly GUIContent noSelectionWarning = EditorGUIUtility.TrTextContent("No Texture or Sprite selected");
             public static readonly GUIContent selectionNotEditableBySpriteEditor = EditorGUIUtility.TrTextContent("Selected object is not supported by Sprite Editor Window.");
+=======
+            public static readonly GUIContent noSelectionWarning = EditorGUIUtility.TrTextContent("No texture or sprite selected");
+>>>>>>> Stashed changes
             public static readonly GUIContent noModuleWarning = EditorGUIUtility.TrTextContent("No Sprite Editor module available");
             public static readonly GUIContent applyRevertModuleDialogTitle = EditorGUIUtility.TrTextContent("Unapplied module changes");
             public static readonly GUIContent applyRevertModuleDialogContent = EditorGUIUtility.TrTextContent("You have unapplied changes from the current module");
@@ -352,18 +365,24 @@ namespace UnityEditor.U2D.Sprites
 
         public void RefreshPropertiesCache()
         {
+<<<<<<< Updated upstream
             m_Texture = null;
+=======
+>>>>>>> Stashed changes
             var obj = AssetDatabase.LoadMainAssetAtPath(selectedAssetPath);
             m_SpriteDataProvider = spriteDataProviderFactories.GetSpriteEditorDataProviderFromObject(obj);
             if (!IsSpriteDataProviderValid())
             {
                 selectedAssetPath = "";
+<<<<<<< Updated upstream
                 var s = m_SpriteDataProviderFactories.GetSpriteObject(Selection.activeObject);
                 if(s != null)
                 {
                     var t = SpriteInspector.BuildPreviewTexture(s, null, false, (int)s.rect.width, (int)s.rect.height);
                     SetPreviewTexture(t, t.width, t.height);
                 }
+=======
+>>>>>>> Stashed changes
                 return;
             }
 
@@ -393,13 +412,22 @@ namespace UnityEditor.U2D.Sprites
             m_SpriteDataProvider = null;
         }
 
+<<<<<<< Updated upstream
         private Rect spriteEditorMessageRect
+=======
+        private Rect warningMessageRect
+>>>>>>> Stashed changes
         {
             get
             {
                 return new Rect(
+<<<<<<< Updated upstream
                     k_InspectorWindowMargin,
                     k_InspectorWindowMargin,
+=======
+                    position.width - k_WarningMessageWidth - k_InspectorWindowMargin - k_ScrollbarMargin,
+                    k_InspectorWindowMargin + k_ScrollbarMargin,
+>>>>>>> Stashed changes
                     k_WarningMessageWidth,
                     k_WarningMessageHeight);
             }
@@ -447,6 +475,7 @@ namespace UnityEditor.U2D.Sprites
         {
             // In case of changed of texture/sprite or selected on non texture object
             bool updateModules = false;
+<<<<<<< Updated upstream
             var selectedSprite = spriteDataProviderFactories.GetSpriteObject(selectedObject);
             var assetPath = GetSelectionAssetPath();
             var dataProvider = spriteDataProviderFactories.GetSpriteEditorDataProviderFromObject(selectedObject);
@@ -456,6 +485,13 @@ namespace UnityEditor.U2D.Sprites
                 HandleApplyRevertDialog(SpriteEditorWindowStyles.applyRevertDialogTitle.text,
                     String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, selectedAssetPath));
                 selectedAssetPath = assetPath;
+=======
+            if (selectedProviderChanged)
+            {
+                HandleApplyRevertDialog(SpriteEditorWindowStyles.applyRevertDialogTitle.text,
+                    String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, selectedAssetPath));
+                selectedAssetPath = GetSelectionAssetPath();
+>>>>>>> Stashed changes
                 ResetWindow();
                 ResetZoomAndScroll();
                 RefreshPropertiesCache();
@@ -513,6 +549,7 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+<<<<<<< Updated upstream
         protected void SetTitleContent(string windowTitle, string windowIconPath)
         {
             if (string.IsNullOrEmpty(windowTitle))
@@ -544,6 +581,12 @@ namespace UnityEditor.U2D.Sprites
         {
             name = "SpriteEditorWindow";
             SetTitleContent(L10n.Tr("Sprite Editor"), "Packages/com.unity.2d.sprite/Editor/Assets/SpriteEditor");
+=======
+        void OnEnable()
+        {
+            name = "SpriteEditorWindow";
+            titleContent = EditorGUIUtility.TrTextContentWithIcon(L10n.Tr("Sprite Editor"), "Packages/com.unity.2d.sprite/Editor/Assets/SpriteEditor.png");
+>>>>>>> Stashed changes
             selectedObject = Selection.activeObject;
             minSize = new Vector2(360, 200);
             m_UndoSystem.RegisterUndoCallback(UndoRedoPerformed);
@@ -787,6 +830,7 @@ namespace UnityEditor.U2D.Sprites
             UpdateAvailableModules();
         }
 
+<<<<<<< Updated upstream
         void ShowEditorMessage(string message, MessageType messageType)
         {
             GUILayout.BeginArea(spriteEditorMessageRect);
@@ -794,6 +838,8 @@ namespace UnityEditor.U2D.Sprites
             GUILayout.EndArea();
         }
 
+=======
+>>>>>>> Stashed changes
         private void DoTextureAndModulesGUI()
         {
             // Don't do anything until reset event is sent
@@ -803,6 +849,7 @@ namespace UnityEditor.U2D.Sprites
             UpdateAssetSelectionChange();
             if (m_ResetCommandSent)
                 return;
+<<<<<<< Updated upstream
             textureViewRect = new Rect(0f, 0f, m_MainViewIMGUIElement.layout.width - k_ScrollbarMargin, m_MainViewIMGUIElement.layout.height - k_ScrollbarMargin);
             if (!activeDataProviderSelected)
             {
@@ -814,6 +861,13 @@ namespace UnityEditor.U2D.Sprites
                 else
                 {
                     ShowEditorMessage(SpriteEditorWindowStyles.noSelectionWarning.text, MessageType.Info);
+=======
+            if (!activeDataProviderSelected)
+            {
+                using (new EditorGUI.DisabledScope(true))
+                {
+                    GUILayout.Label(SpriteEditorWindowStyles.noSelectionWarning);
+>>>>>>> Stashed changes
                 }
                 return;
             }
@@ -841,6 +895,7 @@ namespace UnityEditor.U2D.Sprites
 
         protected override void DoTextureGUIExtras()
         {
+<<<<<<< Updated upstream
             if (activeDataProviderSelected)
             {
                 HandleFrameSelected();
@@ -860,6 +915,23 @@ namespace UnityEditor.U2D.Sprites
 
                 m_CurrentModule.DoMainGUI();
             }
+=======
+            HandleFrameSelected();
+
+            if (m_EventSystem.current.type == EventType.Repaint)
+            {
+                SpriteEditorUtility.BeginLines(new Color(1f, 1f, 1f, 0.5f));
+                var selectedRect = selectedSpriteRect != null ? selectedSpriteRect.spriteID : new GUID();
+                for (int i = 0; i < m_RectsCache.Count; i++)
+                {
+                    if (m_RectsCache[i].spriteID != selectedRect)
+                        SpriteEditorUtility.DrawBox(m_RectsCache[i].rect);
+                }
+                SpriteEditorUtility.EndLines();
+            }
+
+            m_CurrentModule.DoMainGUI();
+>>>>>>> Stashed changes
         }
 
         private void DoToolbarGUI()
@@ -958,8 +1030,15 @@ namespace UnityEditor.U2D.Sprites
         {
             if (editingDisabled)
             {
+<<<<<<< Updated upstream
                 var disableMessage = m_AssetNotEditable ? SpriteEditorWindowStyles.editingDisableMessageBecauseNonEditableLabel.text : SpriteEditorWindowStyles.editingDisableMessageBecausePlaymodeLabel.text;
                 ShowEditorMessage(disableMessage, MessageType.Warning);
+=======
+                GUILayout.BeginArea(warningMessageRect);
+                var disableMessage = m_AssetNotEditable ? SpriteEditorWindowStyles.editingDisableMessageBecauseNonEditableLabel.text : SpriteEditorWindowStyles.editingDisableMessageBecausePlaymodeLabel.text;
+                EditorGUILayout.HelpBox(disableMessage, MessageType.Warning);
+                GUILayout.EndArea();
+>>>>>>> Stashed changes
             }
         }
 
@@ -1421,7 +1500,11 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+<<<<<<< Updated upstream
         [MenuItem("Window/2D/Sprite Editor", priority = 0)]
+=======
+        [MenuItem("Window/2D/Sprite Editor", false, 0)]
+>>>>>>> Stashed changes
         static private void OpenSpriteEditorWindow()
         {
             SpriteEditorWindow.GetWindow(Selection.activeObject);
@@ -1444,6 +1527,7 @@ namespace UnityEditor.U2D.Sprites
                 foreach (var deletedAsset in deletedAssets)
                     SpriteEditorWindow.OnTextureReimport(win, deletedAsset);
 
+<<<<<<< Updated upstream
                 bool rebuildTracker = false;
                 var assetPaths = ActiveEditorTracker.sharedTracker.activeEditors.Where(x => x.target is AssetImporter).Select(y => ((AssetImporter)y.target).assetPath);
                 foreach (var importedAsset in importedAssets)
@@ -1457,6 +1541,10 @@ namespace UnityEditor.U2D.Sprites
                 // Since Inspector Window doesn't rebuild anymore, we need to do it manually (https://github.cds.internal.unity3d.com/unity/unity/pull/13828)
                 if(rebuildTracker)
                     ActiveEditorTracker.sharedTracker.ForceRebuild();
+=======
+                foreach (var importedAsset in importedAssets)
+                    SpriteEditorWindow.OnTextureReimport(win, importedAsset);
+>>>>>>> Stashed changes
             }
         }
     }

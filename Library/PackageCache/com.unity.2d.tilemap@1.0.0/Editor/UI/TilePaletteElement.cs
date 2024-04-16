@@ -29,6 +29,7 @@ namespace UnityEditor.Tilemaps
         private static readonly string ussClassName = "unity-tilepalette-element";
         private static readonly string toolbarUssClassName = ussClassName + "-toolbar";
         private static readonly string rightToolbarUssClassName = toolbarUssClassName + "-right";
+<<<<<<< Updated upstream
 
         private static readonly string kTilePaletteElementHideOnPickEditorPref = "TilePaletteElementHideOnPick";
 
@@ -58,6 +59,19 @@ namespace UnityEditor.Tilemaps
         private VisualElement m_RightToolbar;
 
         private event Action onBrushPickedInternal;
+=======
+        private static readonly string buttonStripClassName = "unity-editor-toolbar__button-strip";
+        private static readonly string stripElementClassName = buttonStripClassName + "-element";
+        private static readonly string leftStripElementClassName = stripElementClassName + "--left";
+        private static readonly string middleStripElementClassName = stripElementClassName + "--middle";
+        private static readonly string rightStripElementClassName = stripElementClassName + "--right";
+        private static readonly string aloneStripElementClassName = stripElementClassName + "--alone";
+
+        private static readonly string k_Name = L10n.Tr("Tile Palette Element");
+
+        private TilePaletteClipboardElement m_ClipboardElement;
+        private TilePaletteEditToggle m_EditToggle;
+>>>>>>> Stashed changes
 
         /// <summary>
         /// Whether the clipboard is unlocked for editing.
@@ -72,6 +86,7 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< Updated upstream
         /// <summary>
         /// Whether the clipboard is hidden when the Pick EditorTool is activated on it.
         /// </summary>
@@ -102,6 +117,8 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+=======
+>>>>>>> Stashed changes
         internal GridPaintPaletteClipboard clipboardView => m_ClipboardElement.clipboardView;
 
         /// <summary>
@@ -114,6 +131,7 @@ namespace UnityEditor.Tilemaps
             name = k_Name;
             TilePaletteOverlayUtility.SetStyleSheet(this);
 
+<<<<<<< Updated upstream
             m_ToolbarElement = new VisualElement();
             m_ToolbarElement.AddToClassList(toolbarUssClassName);
             Add(m_ToolbarElement);
@@ -132,11 +150,38 @@ namespace UnityEditor.Tilemaps
             m_RightToolbar = EditorToolbar.CreateOverlay(k_RightToolbarElements);
             SetupRightToolbar();
             rightToolbarElement.Add(m_RightToolbar);
+=======
+            var toolbarElement = new VisualElement();
+            toolbarElement.AddToClassList(toolbarUssClassName);
+            Add(toolbarElement);
+
+            m_ClipboardElement = new TilePaletteClipboardElement();
+            Add(m_ClipboardElement);
+
+            string[] leftToolbarElements = new[] { TilePaletteActivePalettePopupIcon.k_ToolbarId, TilePaletteActivePalettePopup.k_ToolbarId };
+            var leftToolbar = EditorToolbar.CreateOverlay(leftToolbarElements);
+            toolbarElement.Add(leftToolbar);
+
+            var rightToolbarElement = new VisualElement();
+            rightToolbarElement.AddToClassList(rightToolbarUssClassName);
+            toolbarElement.Add(rightToolbarElement);
+
+            string[] rightToolbarElements = new[] {
+                TilePaletteEditToggle.k_ToolbarId
+                , TilePaletteGridToggle.k_ToolbarId
+                , TilePaletteGizmoToggle.k_ToolbarId
+                , TilePaletteBrushElementToggle.k_ToolbarId
+            };
+            var rightToolbar = EditorToolbar.CreateOverlay(rightToolbarElements);
+            SetupChildrenAsButtonStripForVisible(rightToolbar);
+            rightToolbarElement.Add(rightToolbar);
+>>>>>>> Stashed changes
 
             m_EditToggle = this.Q<TilePaletteEditToggle>();
             m_EditToggle.SetValueWithoutNotify(false);
             m_EditToggle.ToggleChanged += OnEditToggleChanged;
 
+<<<<<<< Updated upstream
             m_GridToggle = this.Q<TilePaletteGridToggle>();
             m_GridToggle.SetValueWithoutNotify(GridPaintingState.drawGridGizmo);
             m_GridToggle.ToggleChanged += OnGridToggleChanged;
@@ -153,11 +198,24 @@ namespace UnityEditor.Tilemaps
             RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
 
             UpdateToggleState();
+=======
+            var gridToggle = this.Q<TilePaletteGridToggle>();
+            gridToggle.SetValueWithoutNotify(GridPaintingState.drawGridGizmo);
+            gridToggle.ToggleChanged += OnGridToggleChanged;
+
+            var gizmoToggle = this.Q<TilePaletteGizmoToggle>();
+            gizmoToggle.SetValueWithoutNotify(GridPaintingState.drawGizmos);
+            gizmoToggle.ToggleChanged += OnGizmoToggleChanged;
+
+            RegisterCallback<AttachToPanelEvent>(OnAttachedToPanel);
+            RegisterCallback<DetachFromPanelEvent>(OnDetachedToPanel);
+>>>>>>> Stashed changes
         }
 
         private void OnAttachedToPanel(AttachToPanelEvent evt)
         {
             m_ClipboardElement.clipboardUnlockedChanged += OnUnlockedChanged;
+<<<<<<< Updated upstream
             GridPaintingState.palettesChanged += UpdateToggleState;
         }
 
@@ -171,6 +229,61 @@ namespace UnityEditor.Tilemaps
         {
             if (hideOnPick)
                 onBrushPickedInternal?.Invoke();
+=======
+        }
+
+        private void OnDetachedToPanel(DetachFromPanelEvent evt)
+        {
+            m_ClipboardElement.clipboardUnlockedChanged -= OnUnlockedChanged;
+        }
+
+        private static void SetupChildrenAsButtonStripForVisible(VisualElement root)
+        {
+            root.AddToClassList(buttonStripClassName);
+
+            int count = root.hierarchy.childCount;
+            if (count == 1)
+            {
+                var element = root.hierarchy.ElementAt(0);
+                bool visible = element.style.display != DisplayStyle.None && element.visible;
+                element.EnableInClassList(aloneStripElementClassName, visible);
+            }
+            else
+            {
+                bool firstVisible = false;
+                int lastVisible = 0;
+                for (var i = 0; i < count; ++i)
+                {
+                    var element = root.hierarchy.ElementAt(i);
+
+                    //Skip if element not visible
+                    bool visible = element.style.display != DisplayStyle.None && element.visible;
+                    element.AddToClassList(stripElementClassName);
+                    if (firstVisible)
+                    {
+                        element.EnableInClassList(middleStripElementClassName, visible);
+                    }
+                    if (!firstVisible)
+                    {
+                        element.EnableInClassList(leftStripElementClassName, visible);
+                        firstVisible = true;
+                    }
+                    if (visible)
+                        lastVisible = i;
+                }
+                var lastElement = root.hierarchy.ElementAt(lastVisible);
+                if (lastElement.ClassListContains(leftStripElementClassName))
+                {
+                    lastElement.RemoveFromClassList(leftStripElementClassName);
+                    lastElement.AddToClassList(aloneStripElementClassName);
+                }
+                else
+                {
+                    lastElement.RemoveFromClassList(middleStripElementClassName);
+                    lastElement.AddToClassList(rightStripElementClassName);
+                }
+            }
+>>>>>>> Stashed changes
         }
 
         private void OnEditToggleChanged(bool unlock)
@@ -192,6 +305,7 @@ namespace UnityEditor.Tilemaps
         {
             GridPaintingState.drawGizmos = drawGizmo;
         }
+<<<<<<< Updated upstream
 
         private void UpdateToggleState()
         {
@@ -211,6 +325,8 @@ namespace UnityEditor.Tilemaps
             TilePaletteOverlayUtility.SetupChildrenAsButtonStripForVisible(m_RightToolbar,
                 onBrushPickedInternal != null ? k_TilePaletteOverlayActiveRightToolbar : k_TilePaletteWindowActiveRightToolbar);
         }
+=======
+>>>>>>> Stashed changes
     }
 
     [EditorToolbarElement(k_ToolbarId)]

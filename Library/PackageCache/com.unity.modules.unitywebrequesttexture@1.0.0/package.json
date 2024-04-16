@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "name": "com.unity.modules.unitywebrequesttexture",
   "version": "1.0.0",
   "type": "module",
@@ -10,3 +11,15 @@
     "com.unity.modules.imageconversion": "1.0.0"
   }
 }
+=======
+    "name": "com.unity.modules.unitywebrequesttexture",
+    "version": "1.0.0",
+    "type": "module",
+    "displayName": "Unity Web Request Texture",
+    "description": "The UnityWebRequestTexture module provides the DownloadHandlerTexture class to use UnityWebRequest to download Textures. Scripting API: https://docs.unity3d.com/ScriptReference/UnityEngine.UnityWebRequestTextureModule.html",
+    "dependencies": {
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0"
+    }
+}
+>>>>>>> Stashed changes

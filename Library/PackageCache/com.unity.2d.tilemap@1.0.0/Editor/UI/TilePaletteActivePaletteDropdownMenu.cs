@@ -5,15 +5,22 @@ namespace UnityEditor.Tilemaps
 {
     internal class TilePaletteActivePaletteDropdownMenu : IGenericMenu
     {
+<<<<<<< Updated upstream
         private const float k_DropdownWidth = 156f;
 
         private GridPalettesDropdown m_Dropdown;
         private TilePaletteWhiteboxPaletteDropdownMenu m_Menu;
+=======
+        private const float k_DropdownWidth = 150f;
+
+        private GridPalettesDropdown m_Dropdown;
+>>>>>>> Stashed changes
 
         public TilePaletteActivePaletteDropdownMenu()
         {
             int index = GridPaintingState.palettes != null ? GridPaintingState.palettes.IndexOf(GridPaintingState.palette) : 0;
             var menuData = new GridPalettesDropdown.MenuItemProvider();
+<<<<<<< Updated upstream
             m_Dropdown = new GridPalettesDropdown(menuData, index, null, SelectPalette, HoverPalette, k_DropdownWidth);
         }
 
@@ -44,6 +51,9 @@ namespace UnityEditor.Tilemaps
         private void OnClose()
         {
             m_Dropdown.editorWindow.Close();
+=======
+            m_Dropdown = new GridPalettesDropdown(menuData, index, null, SelectPalette, k_DropdownWidth);
+>>>>>>> Stashed changes
         }
 
         public void AddItem(string itemName, bool isChecked, System.Action action)
@@ -73,10 +83,17 @@ namespace UnityEditor.Tilemaps
             {
                 GridPaintingState.palette = GridPaintingState.palettes[i];
             }
+<<<<<<< Updated upstream
             else if (i == GridPaintingState.palettes.Count)
             {
                 m_Dropdown.editorWindow.Close();
                 OpenAddPalettePopup(new Rect());
+=======
+            else
+            {
+                m_Dropdown.editorWindow.Close();
+                OpenAddPalettePopup(new Rect(0, 0, 0, 0));
+>>>>>>> Stashed changes
             }
         }
 

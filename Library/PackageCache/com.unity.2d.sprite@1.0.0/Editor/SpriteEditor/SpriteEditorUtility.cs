@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 using System;
+=======
+>>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEvent = UnityEngine.Event;
@@ -176,6 +179,7 @@ namespace UnityEditor.U2D.Sprites
 
             EditorGUIUtility.labelWidth = oldLabelWidth;
         }
+<<<<<<< Updated upstream
 
         public static void DetermineGridCellSizeWithCellCount(int width, int height, Vector2 offset, Vector2 padding, Vector2 cellCount, out Vector2 cellSize)
         {
@@ -188,5 +192,7 @@ namespace UnityEditor.U2D.Sprites
             cellSize.x = Mathf.Clamp(cellSize.x, 1, width);
             cellSize.y = Mathf.Clamp(cellSize.y, 1, height);
         }
+=======
+>>>>>>> Stashed changes
     }
 }

@@ -11,6 +11,7 @@ namespace UnityEditor.Tilemaps
         private static StyleSheet s_TilePaletteOverlayStyleSheet;
         private static StyleSheet s_TilePaletteOverlayStyleSheetLight;
         private static StyleSheet s_TilePaletteOverlayStyleSheetDark;
+<<<<<<< Updated upstream
 
         private static readonly string buttonStripClassName = "unity-editor-toolbar__button-strip";
         private static readonly string stripElementClassName = buttonStripClassName + "-element";
@@ -18,6 +19,8 @@ namespace UnityEditor.Tilemaps
         private static readonly string middleStripElementClassName = stripElementClassName + "--middle";
         private static readonly string rightStripElementClassName = stripElementClassName + "--right";
         private static readonly string aloneStripElementClassName = stripElementClassName + "--alone";
+=======
+>>>>>>> Stashed changes
         private static StyleSheet StyleSheet
         {
             get
@@ -56,6 +59,7 @@ namespace UnityEditor.Tilemaps
             else
                 ve.styleSheets.Add(StyleSheetLight);
         }
+<<<<<<< Updated upstream
 
         internal static void SetupChildrenAsButtonStripForVisible(VisualElement root, bool[] visibleList)
         {
@@ -131,5 +135,7 @@ namespace UnityEditor.Tilemaps
                 }
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

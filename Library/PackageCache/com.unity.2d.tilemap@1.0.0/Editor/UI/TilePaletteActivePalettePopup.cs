@@ -13,7 +13,11 @@ namespace UnityEditor.Tilemaps
     {
         internal const string k_ToolbarId = "Tools/Tile Palette Active Palette";
 
+<<<<<<< Updated upstream
         private static string kNullGameObjectName = L10n.Tr("Create New Tile Palette");
+=======
+        private static string kNullGameObjectName = L10n.Tr("No Valid Palette");
+>>>>>>> Stashed changes
         private static string kLabelTooltip =
             L10n.Tr("Specifies the currently active Palette used for painting in the Scene View.");
 

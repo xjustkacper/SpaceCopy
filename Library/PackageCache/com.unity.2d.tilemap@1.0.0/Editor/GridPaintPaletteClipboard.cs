@@ -13,6 +13,7 @@ namespace UnityEditor.Tilemaps
     {
         static class Styles
         {
+<<<<<<< Updated upstream
             public static readonly GUIContent emptyProjectTopInfo = EditorGUIUtility.TrTextContent("Drag Tile, Sprite, Texture (Sprite type) asset/s here to");
             public static readonly GUIContent emptyProjectLeftInfo = EditorGUIUtility.TrTextContent("create a new ");
             public static readonly GUIContent emptyProjectRightInfo = EditorGUIUtility.TrTextContent(" Tile Palette");
@@ -24,6 +25,12 @@ namespace UnityEditor.Tilemaps
             public static readonly GUIContent invalidPaletteInfo = EditorGUIUtility.TrTextContent("This is an invalid palette. Did you delete the palette asset?");
             public static readonly GUIContent invalidGridInfo = EditorGUIUtility.TrTextContent("The palette has an invalid Grid. Did you add a Grid to the palette asset?");
             public static readonly GUIContent invalidDragAndDropInfo = EditorGUIUtility.TrTextContent("You have dragged invalid items to the palette.");
+=======
+            public static readonly GUIContent emptyProjectInfo = EditorGUIUtility.TrTextContent("Create a new palette in the dropdown above.");
+            public static readonly GUIContent emptyPaletteInfo = EditorGUIUtility.TrTextContent("Drag Tile, Sprite or Sprite Texture assets here.");
+            public static readonly GUIContent invalidPaletteInfo = EditorGUIUtility.TrTextContent("This is an invalid palette. Did you delete the palette asset?");
+            public static readonly GUIContent invalidGridInfo = EditorGUIUtility.TrTextContent("The palette has an invalid Grid. Did you add a Grid to the palette asset?");
+>>>>>>> Stashed changes
         }
 
 
@@ -47,7 +54,11 @@ namespace UnityEditor.Tilemaps
         private bool m_PaletteNeedsSave;
         private const float k_ZoomSpeed = 7f;
         private const float k_MinZoom = 10f; // How many pixels per cell at minimum
+<<<<<<< Updated upstream
         private const float k_MaxZoom = 200f; // How many pixels per cell at maximum
+=======
+        private const float k_MaxZoom = 100f; // How many pixels per cell at maximum
+>>>>>>> Stashed changes
         private const float k_Padding = 0.75f; // How many percentages of window size is the empty padding around the palette content
 
         private int m_KeyboardPanningID;
@@ -78,12 +89,15 @@ namespace UnityEditor.Tilemaps
 
         public bool activeDragAndDrop { get { return DragAndDrop.objectReferences.Length > 0 && guiRect.Contains(Event.current.mousePosition); } }
 
+<<<<<<< Updated upstream
         [SerializeField]
         private GridPaletteUtility.GridPaletteType m_FirstUserPaletteType = GridPaletteUtility.GridPaletteType.Rectangle;
         [SerializeField]
         private bool m_WhiteboxFoldout = false;
         [SerializeField] private int m_WhiteboxIndex = 0;
 
+=======
+>>>>>>> Stashed changes
         [SerializeField] private bool m_CameraInitializedToBounds;
         [SerializeField] public bool m_CameraPositionSaved;
         [SerializeField] public Vector3 m_CameraPosition;
@@ -150,6 +164,7 @@ namespace UnityEditor.Tilemaps
         private Mesh m_GridMesh;
         private int m_LastGridHash;
         private Material m_GridMaterial;
+<<<<<<< Updated upstream
         private static readonly PrefColor k_GridColor = new PrefColor("2D/Tile Palette Grid", 255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f, 25.5f / 255.0f);
         private static readonly PrefColor tilePaletteBackgroundColor = new PrefColor("2D/Tile Palette Background"
             , 1.0f / 255.0f // Light
@@ -159,6 +174,17 @@ namespace UnityEditor.Tilemaps
             , 1.0f / 255.0f // Dark
             , 35.0f / 255.0f
             , 90.0f / 255.0f
+=======
+        private static readonly Color k_GridColor = Color.white.AlphaMultiplied(0.1f);
+        private static readonly PrefColor tilePaletteBackgroundColor = new PrefColor("2D/Tile Palette Background"
+            , 118.0f / 255.0f // Light
+            , 118.0f / 255.0f
+            , 118.0f / 255.0f
+            , 127.0f / 255.0f
+            , 31.0f / 255.0f // Dark
+            , 31.0f / 255.0f
+            , 31.0f / 255.0f
+>>>>>>> Stashed changes
             , 127.0f / 255.0f);
 
         private bool m_PaletteUsed; // We mark palette used, when it has been changed in any way during being actively open.
@@ -180,14 +206,18 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< Updated upstream
         private RectInt? m_GameObjectBounds = null;
 
+=======
+>>>>>>> Stashed changes
         private RectInt bounds
         {
             get
             {
                 RectInt r = default;
                 if (tilemap == null || TilemapIsEmpty(tilemap))
+<<<<<<< Updated upstream
                 {
                     if (!isReceivingDragAndDrop)
                         return m_GameObjectBounds.HasValue ? m_GameObjectBounds.Value : r;
@@ -217,6 +247,14 @@ namespace UnityEditor.Tilemaps
                     size = extent - origin;
                     r = new RectInt(origin.x, origin.y, size.x, size.y);
                 }
+=======
+                    return r;
+
+                tilemap.CompressBounds();
+                var origin = tilemap.origin;
+                var size = tilemap.size;
+                r = new RectInt(origin.x, origin.y, size.x, size.y);
+>>>>>>> Stashed changes
                 return r;
             }
         }
@@ -279,8 +317,11 @@ namespace UnityEditor.Tilemaps
 
         public bool isReceivingDragAndDrop { get { return m_HoverData != null && m_HoverData.Count > 0; } }
 
+<<<<<<< Updated upstream
         public bool isInvalidDragAndDrop { get { return m_HoverData != null && m_HoverData.Count == 0; } }
 
+=======
+>>>>>>> Stashed changes
         public bool showNewEmptyClipboardInfo
         {
             get
@@ -303,9 +344,12 @@ namespace UnityEditor.Tilemaps
                 if (isReceivingDragAndDrop)
                     return false;
 
+<<<<<<< Updated upstream
                 if (isInvalidDragAndDrop)
                     return false;
 
+=======
+>>>>>>> Stashed changes
                 // If user happens to erase the last content of used palette, we don't want to show the new palette info anymore
                 if (m_PaletteUsed)
                     return false;
@@ -334,8 +378,11 @@ namespace UnityEditor.Tilemaps
             {
                 m_HoverData.Clear();
                 m_HoverData = null;
+<<<<<<< Updated upstream
                 if (palette == null)
                     DestroyPreviewInstance();
+=======
+>>>>>>> Stashed changes
             }
         }
 
@@ -446,6 +493,7 @@ namespace UnityEditor.Tilemaps
                     transform.gameObject.hideFlags = HideFlags.HideAndDontSave;
 
                 // Show all renderers from Palettes from previous versions
+<<<<<<< Updated upstream
                 var goBounds = SetEnableRenderersAndGetBounds(m_PaletteInstance, true);
                 if (float.IsNormal(goBounds.x) && float.IsNormal(goBounds.y))
                 {
@@ -458,6 +506,9 @@ namespace UnityEditor.Tilemaps
                 {
                     m_GameObjectBounds = null;
                 }
+=======
+                PreviewRenderUtility.SetEnabledRecursive(m_PaletteInstance, true);
+>>>>>>> Stashed changes
 
                 // Update preview Grid Mesh for new palette instance
                 ResetPreviewGridMesh();
@@ -475,6 +526,7 @@ namespace UnityEditor.Tilemaps
                     GridSelection.Select(transform.gameObject, previousGridSelectionPosition);
                 }
             }
+<<<<<<< Updated upstream
             m_DelayedResetPaletteInstance = false;
         }
 
@@ -564,6 +616,8 @@ namespace UnityEditor.Tilemaps
 
             // Update preview Grid Mesh for new palette instance
             ResetPreviewGridMesh();
+=======
+>>>>>>> Stashed changes
         }
 
         public void DestroyPreviewInstance()
@@ -682,6 +736,7 @@ namespace UnityEditor.Tilemaps
             GUI.color = old;
         }
 
+<<<<<<< Updated upstream
         private void DisplayClipboardFirstUserExperienceText(Rect rect)
         {
             var dragRect = new Rect(rect.x, rect.y, rect.width, rect.height * 0.65f);
@@ -747,6 +802,8 @@ namespace UnityEditor.Tilemaps
             GUI.color = old;
         }
 
+=======
+>>>>>>> Stashed changes
         public void OnClipboardGUI(Rect clipboardPosition)
         {
             if (Event.current.type != EventType.Layout && clipboardPosition.Contains(Event.current.mousePosition) && GridPaintingState.activeGrid != this && unlocked)
@@ -756,6 +813,7 @@ namespace UnityEditor.Tilemaps
             }
 
             // Validate palette (case 1017965)
+<<<<<<< Updated upstream
             if (palette == null && GridPaintingState.palettes.Count == 0)
             {
                 DisplayClipboardFirstUserExperienceText(clipboardPosition);
@@ -778,6 +836,28 @@ namespace UnityEditor.Tilemaps
             }
 
             var oldEnabled = GUI.enabled;
+=======
+            GUIContent paletteError = null;
+            if (palette == null)
+            {
+                if (GridPaintingState.palettes.Count == 0)
+                    paletteError = Styles.emptyProjectInfo;
+                else
+                    paletteError = Styles.invalidPaletteInfo;
+            }
+            else if (palette.GetComponent<Grid>() == null)
+            {
+                paletteError = Styles.invalidGridInfo;
+            }
+
+            if (paletteError != null)
+            {
+                DisplayClipboardText(paletteError, clipboardPosition);
+                return;
+            }
+
+            bool oldEnabled = GUI.enabled;
+>>>>>>> Stashed changes
             GUI.enabled = !showNewEmptyClipboardInfo || DragAndDrop.objectReferences.Length > 0;
             if (Event.current.type == EventType.Repaint)
                 guiRect = clipboardPosition;
@@ -788,6 +868,14 @@ namespace UnityEditor.Tilemaps
                 Repaint();
 
             GUI.enabled = oldEnabled;
+<<<<<<< Updated upstream
+=======
+
+            if (showNewEmptyClipboardInfo)
+            {
+                DisplayClipboardText(Styles.emptyPaletteInfo, clipboardPosition);
+            }
+>>>>>>> Stashed changes
         }
 
         public override void OnGUI()
@@ -795,6 +883,7 @@ namespace UnityEditor.Tilemaps
             if (Mathf.Approximately(guiRect.width, 0f) || Mathf.Approximately(guiRect.height, 0f))
                 return;
 
+<<<<<<< Updated upstream
             if (paletteInstance != null)
                 UpdateMouseGridPosition();
 
@@ -812,6 +901,19 @@ namespace UnityEditor.Tilemaps
             }
 
             if (paletteInstance == null)
+=======
+            UpdateMouseGridPosition();
+
+            HandleDragAndDrop();
+
+            if (m_DelayedResetPaletteInstance)
+            {
+                ResetPreviewInstance();
+                m_DelayedResetPaletteInstance = false;
+            }
+
+            if (palette == null)
+>>>>>>> Stashed changes
                 return;
 
             HandlePanAndZoom();
@@ -849,6 +951,17 @@ namespace UnityEditor.Tilemaps
             if (Mathf.Approximately(oldSize.height * oldSize.width * newSize.height * newSize.width, 0f))
                 return;
 
+<<<<<<< Updated upstream
+=======
+            Camera cam = m_PreviewUtility.camera;
+
+            Vector2 sizeDelta = new Vector2(
+                newSize.width / LocalToScreenRatio(newSize.height) - oldSize.width / LocalToScreenRatio(oldSize.height),
+                newSize.height / LocalToScreenRatio(newSize.height) - oldSize.height / LocalToScreenRatio(oldSize.height));
+
+            cam.transform.Translate(sizeDelta / 2f);
+
+>>>>>>> Stashed changes
             ClampZoomAndPan();
         }
 
@@ -1039,7 +1152,10 @@ namespace UnityEditor.Tilemaps
                         disableOnBrushPicked = true;
                         PickBrush(new BoundsInt(m_ActivePick.Value.position + delta, m_ActivePick.Value.size),
                             m_ActivePivot);
+<<<<<<< Updated upstream
                         GridPaintingState.ActiveGridBrushAssetChanged();
+=======
+>>>>>>> Stashed changes
                         disableOnBrushPicked = false;
                         Event.current.Use();
                     }
@@ -1054,18 +1170,28 @@ namespace UnityEditor.Tilemaps
 
         private void ClampZoomAndPan()
         {
+<<<<<<< Updated upstream
             if (grid == null)
                 return;
 
             var pixelsPerCell = grid.cellSize.y * LocalToScreenRatio();
+=======
+            float pixelsPerCell = grid.cellSize.y * LocalToScreenRatio();
+>>>>>>> Stashed changes
             if (pixelsPerCell < k_MinZoom)
                 m_PreviewUtility.camera.orthographicSize = (grid.cellSize.y * guiRect.height) / (k_MinZoom * 2f);
             else if (pixelsPerCell > k_MaxZoom)
                 m_PreviewUtility.camera.orthographicSize = (grid.cellSize.y * guiRect.height) / (k_MaxZoom * 2f);
 
+<<<<<<< Updated upstream
             var cam = m_PreviewUtility.camera;
             var cameraOrthographicSize = cam.orthographicSize;
             var r = paddedBounds;
+=======
+            Camera cam = m_PreviewUtility.camera;
+            float cameraOrthographicSize = cam.orthographicSize;
+            Rect r = paddedBounds;
+>>>>>>> Stashed changes
 
             Vector3 camPos = cam.transform.position;
             Vector2 camMin = camPos - new Vector3(cameraOrthographicSize * (guiRect.width / guiRect.height), cameraOrthographicSize);
@@ -1111,9 +1237,13 @@ namespace UnityEditor.Tilemaps
             {
                 m_PreviewUtility.Render(true);
                 if (GridPaintingState.drawGridGizmo)
+<<<<<<< Updated upstream
                 {
                     RenderGrid();
                 }
+=======
+                    RenderGrid();
+>>>>>>> Stashed changes
                 CallOnPaintSceneGUI(mouseGridPosition);
                 if (GridPaintingState.drawGizmos)
                 {
@@ -1229,6 +1359,7 @@ namespace UnityEditor.Tilemaps
 
             switch (Event.current.type)
             {
+<<<<<<< Updated upstream
                 case EventType.DragUpdated:
                 {
                     if (m_HoverData == null)
@@ -1257,6 +1388,19 @@ namespace UnityEditor.Tilemaps
                     {
                         ClampZoomAndPan();
                         DragAndDrop.visualMode = m_HoverData.Count > 0 ? DragAndDropVisualMode.Copy : DragAndDropVisualMode.Rejected;
+=======
+                //TODO: Cache this
+                case EventType.DragUpdated:
+                {
+                    List<Texture2D> sheets = TileDragAndDrop.GetValidSpritesheets(DragAndDrop.objectReferences);
+                    List<Sprite> sprites = TileDragAndDrop.GetValidSingleSprites(DragAndDrop.objectReferences);
+                    List<TileBase> tiles = TileDragAndDrop.GetValidTiles(DragAndDrop.objectReferences);
+                    m_HoverData = TileDragAndDrop.CreateHoverData(sheets, sprites, tiles, tilemap.cellLayout);
+
+                    if (m_HoverData != null && m_HoverData.Count > 0)
+                    {
+                        DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+>>>>>>> Stashed changes
                         Event.current.Use();
                         GUI.changed = true;
                     }
@@ -1264,6 +1408,7 @@ namespace UnityEditor.Tilemaps
                 break;
                 case EventType.DragPerform:
                 {
+<<<<<<< Updated upstream
                     if (m_HoverData == null)
                         return;
 
@@ -1331,10 +1476,14 @@ namespace UnityEditor.Tilemaps
                     // No palette was created
                     var paletteTilemap = tilemap;
                     if (paletteTilemap == null)
+=======
+                    if (m_HoverData == null || m_HoverData.Count == 0)
+>>>>>>> Stashed changes
                         return;
 
                     RegisterUndo();
 
+<<<<<<< Updated upstream
                     var wasEmpty = TilemapIsEmpty(paletteTilemap);
 
                     var targetPosition = mouseGridPosition;
@@ -1350,6 +1499,25 @@ namespace UnityEditor.Tilemaps
                             offset = item.Value.positionOffset - paletteTilemap.tileAnchor;
 
                             var cellSize = paletteTilemap.cellSize;
+=======
+                    var wasEmpty = TilemapIsEmpty(tilemap);
+
+                    var targetPosition = mouseGridPosition;
+                    DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+                    var tileSheet = TileDragAndDrop.ConvertToTileSheet(m_HoverData);
+                    var i = 0;
+                    foreach (var item in m_HoverData)
+                    {
+                        if (i >= tileSheet.Count)
+                            break;
+
+                        var offset = Vector3.zero;
+                        if (item.Value.hasOffset)
+                        {
+                            offset = item.Value.positionOffset - tilemap.tileAnchor;
+
+                            var cellSize = tilemap.cellSize;
+>>>>>>> Stashed changes
                             if (wasEmpty)
                             {
                                 cellSize = item.Value.scaleFactor;
@@ -1359,6 +1527,7 @@ namespace UnityEditor.Tilemaps
                             offset.z *= cellSize.z;
                         }
 
+<<<<<<< Updated upstream
                         var placePosition = targetPosition + item.Key;
                         // Placing Tiles
                         if (i < tileSheet.Count)
@@ -1418,6 +1587,14 @@ namespace UnityEditor.Tilemaps
                         PickBrush(pickBounds, m_ActivePivot);
                     }
 
+=======
+                        SetTile(tilemap
+                            , targetPosition + item.Key
+                            , tileSheet[i++]
+                            , Color.white
+                            , Matrix4x4.TRS(offset, Quaternion.identity, Vector3.one));
+                    }
+>>>>>>> Stashed changes
                     OnPaletteChanged();
 
                     m_PaletteNeedsSave = true;
@@ -1628,6 +1805,7 @@ namespace UnityEditor.Tilemaps
             return GridLayout.CellLayout.Rectangle;
         }
 
+<<<<<<< Updated upstream
         protected override Vector2Int ScreenToGrid(Vector2 screenPosition, float zPosition)
         {
             Vector3 local = ScreenToLocal(screenPosition);
@@ -1635,6 +1813,13 @@ namespace UnityEditor.Tilemaps
                 local.z = zPosition;
             var result3 = grid.LocalToCell(local);
             var result = new Vector2Int(result3.x, result3.y);
+=======
+        protected override Vector2Int ScreenToGrid(Vector2 screenPosition)
+        {
+            Vector2 local = ScreenToLocal(screenPosition);
+            Vector3Int result3 = grid.LocalToCell(local);
+            Vector2Int result = new Vector2Int(result3.x, result3.y);
+>>>>>>> Stashed changes
             return result;
         }
 
@@ -1679,7 +1864,10 @@ namespace UnityEditor.Tilemaps
                         GridPaintingState.activeBrushEditor.OnMouseLeave();
                         Repaint();
                     }
+<<<<<<< Updated upstream
                     FlushHoverData();
+=======
+>>>>>>> Stashed changes
                 }
             }
         }
@@ -1836,6 +2024,7 @@ namespace UnityEditor.Tilemaps
             m_PaletteNeedsSave = true;
         }
 
+<<<<<<< Updated upstream
         internal void PickFirstFromPalette()
         {
             if (tilemap == null)
@@ -1849,6 +2038,8 @@ namespace UnityEditor.Tilemaps
                 TilemapEditorTool.SetActiveEditorTool(typeof(PaintTool));
         }
 
+=======
+>>>>>>> Stashed changes
         // TODO: Better way of clearing caches than AssetPostprocessor
         public class AssetProcessor : AssetPostprocessor
         {

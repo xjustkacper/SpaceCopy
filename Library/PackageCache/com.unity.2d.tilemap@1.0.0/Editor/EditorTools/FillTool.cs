@@ -10,7 +10,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = "|Flood fill with active brush ({0})";
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_Fill;
+=======
+            public static string shortcutId = "Grid Painting/Fill";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Grid.FillTool", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 

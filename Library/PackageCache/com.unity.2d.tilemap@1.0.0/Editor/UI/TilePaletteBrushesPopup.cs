@@ -67,7 +67,10 @@ namespace UnityEditor.Tilemaps
         private void OnAttachedToPanel(AttachToPanelEvent evt)
         {
             GridPaintingState.brushChanged += OnBrushChanged;
+<<<<<<< Updated upstream
             SetValueWithoutNotify(GridPaintingState.gridBrush);
+=======
+>>>>>>> Stashed changes
         }
 
         private void OnBrushChanged(GridBrushBase obj)

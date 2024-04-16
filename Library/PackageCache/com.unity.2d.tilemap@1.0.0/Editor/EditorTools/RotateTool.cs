@@ -53,7 +53,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = L10n.Tr("|Rotates the contents of the brush clockwise. ({0})");
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_RotateClockwise;
+=======
+            public static string shortcutId = "Grid Painting/Rotate Clockwise";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Packages/com.unity.2d.tilemap/Editor/Icons/Grid.RotateCW.png", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 
@@ -98,7 +102,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = L10n.Tr("|Rotates the contents of the brush counter clockwise. ({0})");
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_RotateAntiClockwise;
+=======
+            public static string shortcutId = "Grid Painting/Rotate Anti-Clockwise";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Packages/com.unity.2d.tilemap/Editor/Icons/Grid.RotateACW.png", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 

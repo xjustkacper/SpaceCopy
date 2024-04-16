@@ -6,6 +6,7 @@ namespace UnityEditor.Tilemaps
 {
     internal class TilePaletteActiveTargetsDropdownMenu : IGenericMenu
     {
+<<<<<<< Updated upstream
         private const float k_ActiveTargetDropdownWidth = 200f;
 
         private GridPaintTargetsDropdown m_Dropdown;
@@ -24,6 +25,17 @@ namespace UnityEditor.Tilemaps
         private void OnClose()
         {
             PopupWindow.Show(default, m_Dropdown);
+=======
+        private const float k_ActiveTargetDropdownWidth = 190f;
+
+        private GridPaintTargetsDropdown m_Dropdown;
+
+        public TilePaletteActiveTargetsDropdownMenu()
+        {
+            int index = GridPaintingState.scenePaintTarget != null ? Array.IndexOf(GridPaintingState.validTargets, GridPaintingState.scenePaintTarget) : 0;
+            var menuData = new GridPaintTargetsDropdown.MenuItemProvider();
+            m_Dropdown = new GridPaintTargetsDropdown(menuData, index, null, SelectTarget, k_ActiveTargetDropdownWidth);
+>>>>>>> Stashed changes
         }
 
         public void AddItem(string itemName, bool isChecked, System.Action action)
@@ -49,12 +61,15 @@ namespace UnityEditor.Tilemaps
 
         private static void SelectTarget(int i, object o)
         {
+<<<<<<< Updated upstream
             if ((GridPaintingState.validTargets == null && i > 0)
                 || (GridPaintingState.validTargets != null && i >= GridPaintingState.validTargets.Length))
             {
                 return;
             }
 
+=======
+>>>>>>> Stashed changes
             var obj = o as GameObject;
             var isPrefabInstance = TilePalettePrefabUtility.IsObjectPrefabInstance(obj);
             if (isPrefabInstance)
@@ -92,6 +107,7 @@ namespace UnityEditor.Tilemaps
 
             GridPaintingState.scenePaintTarget = obj;
         }
+<<<<<<< Updated upstream
 
         private void HoverTarget(int index, Rect itemRect)
         {
@@ -121,5 +137,7 @@ namespace UnityEditor.Tilemaps
                 m_Menu.DropDown(popupRect);
             }
         }
+=======
+>>>>>>> Stashed changes
     }
 }

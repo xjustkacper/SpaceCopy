@@ -5,6 +5,7 @@
     border-top-color: rgb(112, 112, 112);
     border-bottom-color: rgb(112, 112, 112);
 }
+<<<<<<< Updated upstream
 
 .unity-tilepalette-brushpick > .unity-tilepalette-label-toolbar {
     background-color: #414141;
@@ -45,3 +46,5 @@
 .unity-tilepalette-splitview-brushes-toolbar > .unity-toolbar-toggle:checked:hover > .unity-text-element {
     color: #FFFFFF;
 }
+=======
+>>>>>>> Stashed changes

@@ -1,7 +1,11 @@
 using UnityEditor.Overlays;
 using UnityEditor.Toolbars;
 using UnityEngine;
+<<<<<<< Updated upstream
 using UnityEngine.UIElements.Experimental;
+=======
+using UnityEngine.UIElements;
+>>>>>>> Stashed changes
 
 namespace UnityEditor.Tilemaps
 {
@@ -31,8 +35,11 @@ namespace UnityEditor.Tilemaps
         private static string k_TooltipText = L10n.Tr("Opens the Tile Palette Window");
         private const string k_IconPath = "Packages/com.unity.2d.tilemap/Editor/Icons/Tilemap.TilePalette.png";
 
+<<<<<<< Updated upstream
         private IValueAnimation currentAnim;
 
+=======
+>>>>>>> Stashed changes
         public TilePaletteOpenPalette() : base(SceneViewOpenTilePaletteHelper.OpenTilePalette)
         {
             name = "Open Tile Palette";
@@ -41,6 +48,7 @@ namespace UnityEditor.Tilemaps
             icon = EditorGUIUtility.LoadIconRequired(k_IconPath);
             text = k_LabelText;
             tooltip = k_TooltipText;
+<<<<<<< Updated upstream
 
             if (!SceneViewOpenTilePaletteHelper.highlight)
                 return;
@@ -79,6 +87,8 @@ namespace UnityEditor.Tilemaps
                 anim.Stop();
                 anim.Recycle();
             }
+=======
+>>>>>>> Stashed changes
         }
     }
 }

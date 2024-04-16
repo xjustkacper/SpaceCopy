@@ -73,8 +73,13 @@ namespace UnityEditor.Tilemaps
                     case GridLayout.CellLayout.Rectangle:
                     case GridLayout.CellLayout.Hexagon:
                     {
+<<<<<<< Updated upstream
                         m_CellSizing = GridPalette.CellSizing.Manual;
                         m_CellSize = new Vector3(0.8659766f, 1, 0);
+=======
+                        m_CellSizing = GridPalette.CellSizing.Automatic;
+                        m_CellSize = new Vector3(1, 1, 0);
+>>>>>>> Stashed changes
                         break;
                     }
                     case GridLayout.CellLayout.Isometric:
@@ -88,7 +93,11 @@ namespace UnityEditor.Tilemaps
                         m_CellSizing = GridPalette.CellSizing.Manual;
                         m_CellSize = new Vector3(1, 0.5f, 1);
                         m_TransparencySortMode = TransparencySortMode.CustomAxis;
+<<<<<<< Updated upstream
                         m_TransparencySortAxis = new Vector3(0f, 1f, -0.26f);
+=======
+                        m_TransparencySortAxis = new Vector3(0f, 1f, -0.25f);
+>>>>>>> Stashed changes
                         break;
                     }
                 }

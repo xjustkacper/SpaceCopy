@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.2d.common@9.0.4/Samples~/SpriteAtlas/BuiltInVariant/Sprites/SpriteSheet2.png.meta
 guid: be34729e35f3b764eac051e5db637ca0
+=======
+guid: 1ddc9afd21fec77489b1248d18f31b68
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Items/Fruits/Apple.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.2d.common@9.0.4/Samples~/SpriteAtlas/BuiltInVariant/Sprites/SpriteSheet2.png.meta
   serializedVersion: 11
+=======
+  serializedVersion: 12
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Items/Fruits/Apple.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -48,7 +56,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream:Library/PackageCache/com.unity.2d.common@9.0.4/Samples~/SpriteAtlas/BuiltInVariant/Sprites/SpriteSheet2.png.meta
   spritePixelsToUnits: 10
+=======
+  spritePixelsToUnits: 16
+>>>>>>> Stashed changes:Assets/Pixel Adventure 1/Assets/Items/Fruits/Apple.png.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,6 +124,32 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:

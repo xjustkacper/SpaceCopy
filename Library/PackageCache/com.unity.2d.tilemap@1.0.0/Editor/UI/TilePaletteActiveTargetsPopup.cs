@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+<<<<<<< Updated upstream
 using UnityEngine.UIElements.Experimental;
+=======
+>>>>>>> Stashed changes
 
 namespace UnityEditor.Tilemaps
 {
@@ -12,7 +15,11 @@ namespace UnityEditor.Tilemaps
     /// </summary>
     public sealed class TilePaletteActiveTargetsPopup : PopupField<GameObject>
     {
+<<<<<<< Updated upstream
         private static string k_NullGameObjectName = GridPaintTargetsDropdown.k_CreateNewPaintTargetName;
+=======
+        private static string k_NullGameObjectName = L10n.Tr("No Valid Target");
+>>>>>>> Stashed changes
 
         private static string k_LabelTooltip =
             L10n.Tr("Specifies the currently active Tilemap used for painting in the Scene View.");
@@ -42,6 +49,7 @@ namespace UnityEditor.Tilemaps
         /// </summary>
         private new static readonly string inputUssClassName = ussClassName + "__input";
         /// <summary>
+<<<<<<< Updated upstream
         /// USS class name of warning elements in elements of this type.
         /// </summary>
         private static readonly string warningUssClassName = ussClassName + "__warning";
@@ -49,11 +57,21 @@ namespace UnityEditor.Tilemaps
         /// USS class name of input elements in elements of this type when create target hint is shown.
         /// </summary>
         private static readonly string createHintUssClassName = ussClassName + "__create";
+=======
+        /// USS class name of input elements in elements of this type when warning is shown.
+        /// </summary>
+        private static readonly string inputWarningUssClassName = inputUssClassName + "--warning";
+        /// <summary>
+        /// USS class name of warning elements in elements of this type.
+        /// </summary>
+        private static readonly string warningUssClassName = ussClassName + "__warning";
+>>>>>>> Stashed changes
 
         private readonly VisualElement m_WarningIconElement;
 
         private static List<GameObject> s_InvalidTargetsList = new List<GameObject>();
 
+<<<<<<< Updated upstream
         private bool needCreate
         {
             get => GridPaintingState.scenePaintTarget == null
@@ -62,6 +80,8 @@ namespace UnityEditor.Tilemaps
         }
         private ValueAnimation<StyleValues> currentAnim;
 
+=======
+>>>>>>> Stashed changes
         /// <summary>
         /// Initializes and returns an instance of TilePaletteActiveTargetsPopup.
         /// </summary>
@@ -88,6 +108,10 @@ namespace UnityEditor.Tilemaps
             m_WarningIconElement.name = "Warning Icon";
             m_WarningIconElement.AddToClassList(warningUssClassName);
             m_WarningIconElement.tooltip = k_WarningTooltip;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             contentContainer.Add(m_WarningIconElement);
 
             RegisterCallback<AttachToPanelEvent>(OnAttachedToPanel);
@@ -104,22 +128,31 @@ namespace UnityEditor.Tilemaps
         {
             GridPaintingState.scenePaintTargetChanged += OnScenePaintTargetChanged;
             GridPaintingState.validTargetsChanged += UpdateTargets;
+<<<<<<< Updated upstream
             GridPaintingState.scenePaintTargetEdited += OnScenePaintTargetEdited;
+=======
+>>>>>>> Stashed changes
         }
 
         private void OnDetachFromPanel(DetachFromPanelEvent evt)
         {
             GridPaintingState.scenePaintTargetChanged -= OnScenePaintTargetChanged;
             GridPaintingState.validTargetsChanged -= UpdateTargets;
+<<<<<<< Updated upstream
             GridPaintingState.scenePaintTargetEdited -= OnScenePaintTargetEdited;
+=======
+>>>>>>> Stashed changes
         }
 
         private string FormatSelectedValueCallback(GameObject go)
         {
             if (go != null)
                 return go.name;
+<<<<<<< Updated upstream
             if (GridPaintingState.scenePaintTarget != null)
                 return GridPaintingState.scenePaintTarget.name;
+=======
+>>>>>>> Stashed changes
             return k_NullGameObjectName;
         }
 
@@ -151,7 +184,10 @@ namespace UnityEditor.Tilemaps
             {
                 choices.Add(target);
             }
+<<<<<<< Updated upstream
             SetValueWithoutNotify(GridPaintingState.scenePaintTarget);
+=======
+>>>>>>> Stashed changes
         }
 
         private void UpdateActiveTarget()
@@ -164,11 +200,24 @@ namespace UnityEditor.Tilemaps
             }
             index = newIndex;
 
+<<<<<<< Updated upstream
             var needWarning = TilePalettePrefabUtility.IsObjectPrefabInstance(GridPaintingState.scenePaintTarget);
+=======
+            bool needWarning = TilePalettePrefabUtility.IsObjectPrefabInstance(GridPaintingState.scenePaintTarget);
+            if (needWarning)
+            {
+                visualInput.AddToClassList(inputWarningUssClassName);
+            }
+            else
+            {
+                visualInput.RemoveFromClassList(inputWarningUssClassName);
+            }
+>>>>>>> Stashed changes
             m_WarningIconElement.visible = needWarning;
             m_WarningIconElement.style.position = needWarning ? Position.Relative : Position.Absolute;
         }
 
+<<<<<<< Updated upstream
 
         private void OnScenePaintTargetEdited(GameObject obj)
         {
@@ -206,6 +255,8 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+=======
+>>>>>>> Stashed changes
         private void UpdateTargets()
         {
             UpdateChoices();

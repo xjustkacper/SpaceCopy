@@ -7,6 +7,7 @@ namespace UnityEditor.Tilemaps
     {
         private bool m_RegisteredEventHandlers;
         private bool m_IsSelectionValid;
+<<<<<<< Updated upstream
         private bool m_HighlightHelper;
 
         internal static bool highlight
@@ -14,6 +15,8 @@ namespace UnityEditor.Tilemaps
             get => instance.m_HighlightHelper;
             set => instance.m_HighlightHelper = value;
         }
+=======
+>>>>>>> Stashed changes
 
         [InitializeOnLoadMethod]
         private static void Initialize()
@@ -49,7 +52,10 @@ namespace UnityEditor.Tilemaps
         internal static void OpenTilePalette()
         {
             GridPaintPaletteWindow.OpenTilemapPalette();
+<<<<<<< Updated upstream
             instance.m_HighlightHelper = false;
+=======
+>>>>>>> Stashed changes
 
             var target = Selection.activeGameObject;
             if (target != null)
@@ -100,10 +106,14 @@ namespace UnityEditor.Tilemaps
 
         private void SelectionChanged()
         {
+<<<<<<< Updated upstream
             var old = m_IsSelectionValid;
             m_IsSelectionValid = IsSelectionValid();
             if (m_IsSelectionValid != old)
                 m_HighlightHelper = m_IsSelectionValid;
+=======
+            m_IsSelectionValid = IsSelectionValid();
+>>>>>>> Stashed changes
         }
 
         internal class SceneViewOpenTilePaletteProperties

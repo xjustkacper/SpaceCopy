@@ -27,10 +27,27 @@ RoleCapability
 ChannelInfo
 ChannelClientInfo
 ProcessService
+<<<<<<< Updated upstream
 NavMeshBuilder
 NavMeshVisualizationSettings
 PrefabStage
 Experimental
+=======
+BrushGUIEditFlags
+Experimental
+TerrainAPI
+RepaintFlags
+IOnPaint
+IOnSceneGUI
+IOnInspectorGUI
+TerrainPaintTool<>
+TerrainToolShortcutContext
+TerrainInspectorUtility
+TerrainPaintUtilityEditor
+NavMeshBuilder
+NavMeshVisualizationSettings
+PrefabStage
+>>>>>>> Stashed changes
 SceneManagement
 PrefabStageUtility
 AssetImportContext
@@ -52,6 +69,7 @@ ScriptedImporterAttribute
 EditorToolbarDropdownToggle
 UnityEditor
 Overlays
+<<<<<<< Updated upstream
 BrushGUIEditFlags
 UnityEditor
 Experimental
@@ -64,6 +82,8 @@ TerrainPaintTool<>
 TerrainToolShortcutContext
 TerrainInspectorUtility
 TerrainPaintUtilityEditor
+=======
+>>>>>>> Stashed changes
 ObstacleAvoidanceType
 UnityEngine
 NavMeshAgent
@@ -135,6 +155,7 @@ IConnectionState
 VertexAttribute
 Rendering
 RenderingThreadingMode
+<<<<<<< Updated upstream
 RayTracingSubMeshFlags
 RayTracingInstanceCullingFlags
 RayTracingInstanceCullingTest
@@ -152,6 +173,11 @@ RendererList
 RendererUtils
 RendererListStatus
 RayTracingShader
+=======
+RendererList
+RendererUtils
+RendererListStatus
+>>>>>>> Stashed changes
 LocalizationAsset
 UnityEditor
 SpriteShapeParameters

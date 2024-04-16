@@ -1,14 +1,20 @@
 using System;
+<<<<<<< Updated upstream
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+=======
+using System.IO;
+using UnityEngine;
+>>>>>>> Stashed changes
 
 namespace UnityEditor.Tilemaps
 {
     internal static class DefaultAssetCreation
     {
+<<<<<<< Updated upstream
         enum TilePaletteAssetMenuPriority : int
         {
             Rectangular = 4,
@@ -22,11 +28,19 @@ namespace UnityEditor.Tilemaps
         static internal Action<int, ProjectWindowCallback.EndNameEditAction, string, Texture2D, string> StartNewAssetNameEditingDelegate = ProjectWindowUtil.StartNameEditingIfProjectWindowExists;
 
         [MenuItem("Assets/Create/2D/Tile Palette/Rectangular", priority = (int)TilePaletteAssetMenuPriority.Rectangular)]
+=======
+        const int k_TilePaletteAssetMenuPriority = 4;
+
+        static internal Action<int, ProjectWindowCallback.EndNameEditAction, string, Texture2D, string> StartNewAssetNameEditingDelegate = ProjectWindowUtil.StartNameEditingIfProjectWindowExists;
+
+        [MenuItem("Assets/Create/2D/Tile Palette/Rectangular", priority = k_TilePaletteAssetMenuPriority)]
+>>>>>>> Stashed changes
         static void MenuItem_AssetsCreate2DTilePaletteRectangular(MenuCommand menuCommand)
         {
             CreateAssetObject("Rectangular Palette", GridLayout.CellLayout.Rectangle, GridLayout.CellSwizzle.XYZ, GridPalette.CellSizing.Automatic, new Vector3(1, 1, 0));
         }
 
+<<<<<<< Updated upstream
         [MenuItem("Assets/Create/2D/Tile Palette/Hexagonal Flat Top", priority = (int)TilePaletteAssetMenuPriority.HexagonalFlatTop)]
         static void MenuItem_AssetsCreate2DTilePaletteHexagonalFlatTop(MenuCommand menuCommand)
         {
@@ -40,11 +54,27 @@ namespace UnityEditor.Tilemaps
         }
 
         [MenuItem("Assets/Create/2D/Tile Palette/Isometric", priority = (int)TilePaletteAssetMenuPriority.Isometric)]
+=======
+        [MenuItem("Assets/Create/2D/Tile Palette/Hexagonal Flat-Top", priority = k_TilePaletteAssetMenuPriority)]
+        static void MenuItem_AssetsCreate2DTilePaletteHexagonalFlatTop(MenuCommand menuCommand)
+        {
+            CreateAssetObject("Hexagon Flat-Top Palette", GridLayout.CellLayout.Hexagon, GridLayout.CellSwizzle.YXZ, GridPalette.CellSizing.Manual, new Vector3(0.8659766f, 1, 0));
+        }
+
+        [MenuItem("Assets/Create/2D/Tile Palette/Hexagonal Pointed-Top", priority = k_TilePaletteAssetMenuPriority)]
+        static void MenuItem_AssetsCreate2DTilePaletteHexagonalPointedTop(MenuCommand menuCommand)
+        {
+            CreateAssetObject("Hexagon Pointed-Top Palette", GridLayout.CellLayout.Hexagon, GridLayout.CellSwizzle.XYZ, GridPalette.CellSizing.Manual, new Vector3(0.8659766f, 1, 0));
+        }
+
+        [MenuItem("Assets/Create/2D/Tile Palette/Isometric", priority = k_TilePaletteAssetMenuPriority)]
+>>>>>>> Stashed changes
         static void MenuItem_AssetsCreate2DTilePaletteIsometric(MenuCommand menuCommand)
         {
             CreateAssetObject("Isometric Palette", GridLayout.CellLayout.Isometric, GridLayout.CellSwizzle.XYZ, GridPalette.CellSizing.Manual, new Vector3(1, 0.5f, 0));
         }
 
+<<<<<<< Updated upstream
         [InitializeOnLoadMethod]
         internal static void InitializeWhiteboxSampleMenuItems()
         {
@@ -101,6 +131,8 @@ namespace UnityEditor.Tilemaps
             StartNewAssetNameEditingDelegate(0, action, destName, icon, "");
         }
 
+=======
+>>>>>>> Stashed changes
         static void CreateAssetObject(string defaultAssetName, GridLayout.CellLayout layout, GridLayout.CellSwizzle swizzle, GridPalette.CellSizing cellSizing, Vector3 cellSize)
         {
             var assetSelectionPath = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -115,6 +147,7 @@ namespace UnityEditor.Tilemaps
 
             var destName = AssetDatabase.GenerateUniqueAssetPath(Path.Combine(path, defaultAssetName));
             var icon = EditorGUIUtility.IconContent<GameObject>().image as Texture2D;
+<<<<<<< Updated upstream
 
             Dictionary<Vector2Int, TileDragAndDropHoverData> hoverData = null;
             if (Selection.objects != null && Selection.objects.Length > 0)
@@ -126,11 +159,14 @@ namespace UnityEditor.Tilemaps
                 hoverData = TileDragAndDrop.CreateHoverData(sheets, sprites, tiles, gos, layout);
             }
 
+=======
+>>>>>>> Stashed changes
             CreateAssetEndNameEditAction action = ScriptableObject.CreateInstance<CreateAssetEndNameEditAction>();
             action.swizzle = swizzle;
             action.layout = layout;
             action.cellSize = cellSize;
             action.cellSizing = cellSizing;
+<<<<<<< Updated upstream
             action.hoverData = hoverData;
 
             StartNewAssetNameEditingDelegate(0, action, destName, icon, "");
@@ -147,6 +183,11 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+=======
+            StartNewAssetNameEditingDelegate(0, action, destName, icon, "");
+        }
+
+>>>>>>> Stashed changes
         internal class CreateAssetEndNameEditAction : ProjectWindowCallback.EndNameEditAction
         {
             public GridLayout.CellLayout layout { get; set; }
@@ -154,6 +195,7 @@ namespace UnityEditor.Tilemaps
             public Vector3 cellSize { get; set; }
             public GridPalette.CellSizing cellSizing { get; set; }
 
+<<<<<<< Updated upstream
             public Dictionary<Vector2Int, TileDragAndDropHoverData> hoverData { get; set; }
 
             public override void Action(int instanceId, string pathName, string resourceFile)
@@ -187,6 +229,12 @@ namespace UnityEditor.Tilemaps
                 AssetDatabase.SaveAssetIfDirty(go);
 
                 Selection.activeObject = go;
+=======
+            public override void Action(int instanceId, string pathName, string resourceFile)
+            {
+                GridPaletteUtility.CreateNewPalette(Path.GetDirectoryName(pathName), Path.GetFileName(pathName), layout,
+                    cellSizing, cellSize, swizzle);
+>>>>>>> Stashed changes
             }
         }
     }

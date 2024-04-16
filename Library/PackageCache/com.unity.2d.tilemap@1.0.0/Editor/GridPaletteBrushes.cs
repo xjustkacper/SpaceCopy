@@ -4,7 +4,10 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEditorInternal;
+<<<<<<< Updated upstream
 using Object = UnityEngine.Object;
+=======
+>>>>>>> Stashed changes
 
 namespace UnityEditor.Tilemaps
 {
@@ -12,8 +15,12 @@ namespace UnityEditor.Tilemaps
     {
         internal static readonly string s_SessionStateLastUsedBrush = "GridPaletteBrushes.LastUsedBrush";
 
+<<<<<<< Updated upstream
         internal static readonly string s_LibraryPath = "Library/GridBrush";
 
+=======
+        private static readonly string s_LibraryPath = "Library/GridBrush";
+>>>>>>> Stashed changes
         private static readonly string s_GridBrushExtension = ".asset";
 
         private static bool s_RefreshCache;
@@ -52,6 +59,7 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< Updated upstream
         private Dictionary<Type, Texture2D> m_BrushIcons;
 
         public static Texture2D GetBrushIcon(Type brushType)
@@ -64,6 +72,8 @@ namespace UnityEditor.Tilemaps
             return Texture2D.redTexture;
         }
 
+=======
+>>>>>>> Stashed changes
         public GridBrushBase GetLastUsedBrush()
         {
             var sessionIndex = SessionState.GetInt(s_SessionStateLastUsedBrush, -1);
@@ -101,6 +111,7 @@ namespace UnityEditor.Tilemaps
             return defaultType;
         }
 
+<<<<<<< Updated upstream
         public static void GridBrushAssetChanged(GridBrushBase brush)
         {
             if (brush == null)
@@ -109,6 +120,16 @@ namespace UnityEditor.Tilemaps
             if (IsLibraryBrush(brush))
             {
                 instance.SaveLibraryGridBrushAsset(brush);
+=======
+        public static void ActiveGridBrushAssetChanged()
+        {
+            if (GridPaintingState.gridBrush == null)
+                return;
+
+            if (IsLibraryBrush(GridPaintingState.gridBrush))
+            {
+                instance.SaveLibraryGridBrushAsset(GridPaintingState.gridBrush);
+>>>>>>> Stashed changes
             }
         }
 
@@ -147,18 +168,28 @@ namespace UnityEditor.Tilemaps
 
             m_BrushNames = new string[m_Brushes.Count];
             m_BrushTooltips = new string[m_Brushes.Count];
+<<<<<<< Updated upstream
             m_BrushIcons = new Dictionary<Type, Texture2D>();
+=======
+>>>>>>> Stashed changes
             for (int i = 0; i < m_Brushes.Count; i++)
             {
                 m_BrushNames[i] = m_Brushes[i].name;
                 var editor = Editor.CreateEditor(m_Brushes[i]) as GridBrushEditorBase;
                 m_BrushTooltips[i] = editor != null ? editor.tooltip : null;
+<<<<<<< Updated upstream
                 m_BrushIcons[m_Brushes[i].GetType()] = editor != null ? editor.icon : Texture2D.redTexture;
                 DestroyImmediate(editor);
             }
         }
 
         internal static bool IsDefaultInstanceVisibleGridBrushType(Type brushType)
+=======
+            }
+        }
+
+        private bool IsDefaultInstanceVisibleGridBrushType(Type brushType)
+>>>>>>> Stashed changes
         {
             CustomGridBrushAttribute[] customBrushes = brushType.GetCustomAttributes(typeof(CustomGridBrushAttribute), false) as CustomGridBrushAttribute[];
             if (customBrushes != null && customBrushes.Length > 0)
@@ -171,7 +202,11 @@ namespace UnityEditor.Tilemaps
         private bool IsAssetVisibleGridBrushType(Type brushType)
         {
             CustomGridBrushAttribute[] customBrushes = brushType.GetCustomAttributes(typeof(CustomGridBrushAttribute), false) as CustomGridBrushAttribute[];
+<<<<<<< Updated upstream
             if (customBrushes != null && customBrushes.Length > 0 && GridBrushPickStoreSettingsProvider.GetUserBrushPickStore() == null)
+=======
+            if (customBrushes != null && customBrushes.Length > 0)
+>>>>>>> Stashed changes
             {
                 return !customBrushes[0].hideAssetInstances;
             }
@@ -186,7 +221,11 @@ namespace UnityEditor.Tilemaps
             {
                 Directory.CreateDirectory(folderPath);
             }
+<<<<<<< Updated upstream
             InternalEditorUtility.SaveToSerializedFileAndForget(new Object[] { brush }, gridBrushPath, EditorSettings.serializationMode != SerializationMode.ForceBinary);
+=======
+            InternalEditorUtility.SaveToSerializedFileAndForget(new[] { brush }, gridBrushPath, true);
+>>>>>>> Stashed changes
         }
 
         private GridBrushBase LoadOrCreateLibraryGridBrushAsset(Type brushType)
@@ -212,7 +251,11 @@ namespace UnityEditor.Tilemaps
 
         private string GenerateGridBrushInstanceLibraryPath(Type brushType)
         {
+<<<<<<< Updated upstream
             var path = FileUtil.CombinePaths(s_LibraryPath, brushType + s_GridBrushExtension);
+=======
+            var path = FileUtil.CombinePaths(s_LibraryPath, brushType.ToString() + s_GridBrushExtension);
+>>>>>>> Stashed changes
             path = FileUtil.NiceWinPath(path);
             return path;
         }

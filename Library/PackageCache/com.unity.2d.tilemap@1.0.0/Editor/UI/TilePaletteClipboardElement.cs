@@ -27,11 +27,14 @@ namespace UnityEditor.Tilemaps
         private EditorWindow m_Window;
 
         /// <summary>
+<<<<<<< Updated upstream
         /// Callback when the active Brush does a Pick on the Clipboard.
         /// </summary>
         public event Action onBrushPicked;
 
         /// <summary>
+=======
+>>>>>>> Stashed changes
         /// Whether the clipboard is unlocked for editing.
         /// </summary>
         public bool clipboardUnlocked
@@ -41,11 +44,14 @@ namespace UnityEditor.Tilemaps
         }
 
         /// <summary>
+<<<<<<< Updated upstream
         /// The last active grid position on the clipboard.
         /// </summary>
         public Vector3Int clipboardMouseGridPosition => new Vector3Int(m_TilePaletteClipboard.mouseGridPosition.x, m_TilePaletteClipboard.mouseGridPosition.y, m_TilePaletteClipboard.zPosition);
 
         /// <summary>
+=======
+>>>>>>> Stashed changes
         /// Callback when the clipboard unlock status has changed
         /// </summary>
         public event Action<bool> clipboardUnlockedChanged;
@@ -121,11 +127,15 @@ namespace UnityEditor.Tilemaps
         private void OnClipboardGUI()
         {
             var clipboardRect = GUILayoutUtility.GetRect(layout.width, layout.height);
+<<<<<<< Updated upstream
             if (onBrushPicked != null && m_TilePaletteClipboard != null)
                 m_TilePaletteClipboard.onBrushPicked += onBrushPicked;
             m_TilePaletteClipboard.OnClipboardGUI(clipboardRect);
             if (onBrushPicked != null && m_TilePaletteClipboard != null)
                 m_TilePaletteClipboard.onBrushPicked -= onBrushPicked;
+=======
+            m_TilePaletteClipboard.OnClipboardGUI(clipboardRect);
+>>>>>>> Stashed changes
         }
     }
 }

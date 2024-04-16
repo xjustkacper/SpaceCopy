@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream
 using System;
 using UnityEditor.EditorTools;
 using UnityEditor.ShortcutManagement;
+=======
+using System.Linq;
+using UnityEditor.EditorTools;
+>>>>>>> Stashed changes
 using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -38,13 +43,19 @@ namespace UnityEditor.Tilemaps
         {
             ToolManager.activeToolChanged += UpdateState;
             ToolManager.activeContextChanged += UpdateState;
+<<<<<<< Updated upstream
             ShortcutIntegration.instance.profileManager.shortcutBindingChanged += UpdateTooltips;
+=======
+>>>>>>> Stashed changes
             UpdateState();
         }
 
         private void OnDetachFromPanel(DetachFromPanelEvent evt)
         {
+<<<<<<< Updated upstream
             ShortcutIntegration.instance.profileManager.shortcutBindingChanged -= UpdateTooltips;
+=======
+>>>>>>> Stashed changes
             ToolManager.activeToolChanged -= UpdateState;
             ToolManager.activeContextChanged -= UpdateState;
         }
@@ -61,6 +72,7 @@ namespace UnityEditor.Tilemaps
 
         private void UpdateState()
         {
+<<<<<<< Updated upstream
             var activeTool = m_TilemapEditorTool == EditorToolManager.activeTool;
             SetValueWithoutNotify(activeTool);
         }
@@ -69,5 +81,10 @@ namespace UnityEditor.Tilemaps
         {
             tooltip = m_TilemapEditorTool != null ? m_TilemapEditorTool.toolbarIcon.tooltip : String.Empty;
         }
+=======
+            bool activeTool = m_TilemapEditorTool == EditorToolManager.activeTool;
+            SetValueWithoutNotify(activeTool);
+        }
+>>>>>>> Stashed changes
     }
 }

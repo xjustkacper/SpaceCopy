@@ -10,7 +10,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = "|Erase with active brush ({0})";
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_Erase;
+=======
+            public static string shortcutId = "Grid Painting/Erase";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Grid.EraserTool", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 

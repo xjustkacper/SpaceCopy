@@ -4,7 +4,11 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 2747690628134850419
+<<<<<<< Updated upstream
     second: Hexagon Flat Top
+=======
+    second: Hexagon Flat-Top
+>>>>>>> Stashed changes
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -23,12 +27,18 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+<<<<<<< Updated upstream
     flipGreenChannel: 0
+=======
+>>>>>>> Stashed changes
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+<<<<<<< Updated upstream
   ignoreMasterTextureLimit: 0
+=======
+>>>>>>> Stashed changes
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -38,8 +48,13 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 1
+<<<<<<< Updated upstream
     aniso: 1
     mipBias: 0
+=======
+    aniso: -1
+    mipBias: -100
+>>>>>>> Stashed changes
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -67,7 +82,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+<<<<<<< Updated upstream
   swizzle: 50462976
+=======
+>>>>>>> Stashed changes
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -121,7 +139,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<< Updated upstream
       name: Hexagon Flat Top
+=======
+      name: Hexagon Flat-Top
+>>>>>>> Stashed changes
       rect:
         serializedVersion: 2
         x: 0
@@ -150,7 +172,11 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 37fc5a28112c12620800000000000000
+<<<<<<< Updated upstream
       internalID: -712631045867808456
+=======
+      internalID: 2747690628134850419
+>>>>>>> Stashed changes
       vertices: []
       indices: 
       edges: []
@@ -179,9 +205,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< Updated upstream
     nameFileIdTable:
       Hexagon Flat Top: -712631045867808456
   pSDRemoveMatte: 0
+=======
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+>>>>>>> Stashed changes
   userData: 
   assetBundleName: 
   assetBundleVariant: 

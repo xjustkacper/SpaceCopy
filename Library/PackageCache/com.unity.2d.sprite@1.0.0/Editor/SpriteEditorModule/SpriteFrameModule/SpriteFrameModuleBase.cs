@@ -25,6 +25,7 @@ namespace UnityEditor.U2D.Sprites
         }
 
         [Serializable]
+<<<<<<< Updated upstream
         class StringGUIDList : IReadOnlyList<GUID>
         {
             [SerializeField]
@@ -39,6 +40,13 @@ namespace UnityEditor.U2D.Sprites
             {
                 get => m_List[index];
                 set => m_List[index] = value;
+=======
+        class StringGUIDList : List<StringGUID>, IReadOnlyList<GUID>
+        {
+            GUID IReadOnlyList<GUID>.this[int index]
+            {
+                get => this[index];
+>>>>>>> Stashed changes
             }
 
             IEnumerator<GUID> IEnumerable<GUID>.GetEnumerator()
@@ -46,6 +54,7 @@ namespace UnityEditor.U2D.Sprites
                 // Not used for now
                 throw new NotImplementedException();
             }
+<<<<<<< Updated upstream
 
             public int Count => m_List.Count;
 
@@ -68,6 +77,8 @@ namespace UnityEditor.U2D.Sprites
             {
                 m_List.Add(value);
             }
+=======
+>>>>>>> Stashed changes
         }
 
         /// <summary>

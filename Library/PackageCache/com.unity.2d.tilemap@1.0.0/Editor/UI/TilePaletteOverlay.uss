@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #titleLabel {
     font-size: 19px;
     -unity-font-style: bold;
@@ -7,6 +8,8 @@
     padding-bottom: 2px;
 }
 
+=======
+>>>>>>> Stashed changes
 .unity-tilepalette-focus-dropdown {
     flex-grow: 1;
     flex-direction: row;
@@ -24,7 +27,10 @@
 
 .unity-tilepalette-splitview {
     flex: 1;
+<<<<<<< Updated upstream
     background-color: var(--unity-colors-inspector_titlebar-background);
+=======
+>>>>>>> Stashed changes
 }
 
 .unity-tilepalette-splitview .unity-tilepalette-splitview-brushes {
@@ -33,6 +39,7 @@
 }
 
 .unity-tilepalette-element {
+<<<<<<< Updated upstream
     padding-top: 2px;
     padding-bottom: 5px;
     padding-left: 5px;
@@ -42,6 +49,11 @@
     overflow: hidden;
     flex-grow: 1;
     background-color: var(--unity-colors-window-background);
+=======
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+>>>>>>> Stashed changes
 }
 
 .overlay--floating .unity-tilepalette-element-resizable {
@@ -51,7 +63,10 @@
 .unity-tilepalette-element-toolbar {
     flex-direction: row;
     overflow: hidden;
+<<<<<<< Updated upstream
     min-height: 24px;
+=======
+>>>>>>> Stashed changes
 }
 
 .unity-tilepalette-element-toolbar-right {
@@ -62,12 +77,16 @@
 
 .unity-tilepalette-clipboard-element {
     flex-grow: 1;
+<<<<<<< Updated upstream
     overflow: hidden;
 }
 
 .unity-toolbar-overlay {
     flex-direction: row;
     align-items: center;
+=======
+    height: 230px;
+>>>>>>> Stashed changes
 }
 
 .unity-tilepalette-element .unity-tilepalette-element-brushelement {
@@ -75,6 +94,23 @@
     position: absolute;
 }
 
+<<<<<<< Updated upstream
+=======
+.unity-tilepalette-element .unity-tilepalette-element-hideclipboard {
+    visibility: hidden;
+    position: absolute;
+}
+
+.unity-tilepalette-element .unity-toolbar-overlay {
+    flex-direction: row;
+}
+
+.unity-overlay .unity-tilepalette-element .unity-tilepalette-element-hideclipboard-show {
+    visibility: visible;
+    position: relative;
+}
+
+>>>>>>> Stashed changes
 .unity-tilepalette-brushes-icon {
     margin: 2px;
     min-width: 16px;
@@ -111,6 +147,7 @@
 }
 
 .unity-tilepalette-activepalettes-field__input {
+<<<<<<< Updated upstream
     min-width: 156px;
     flex-grow: 1;
 }
@@ -146,6 +183,15 @@
     min-width: 16px;
     width: 16px;
     background-image: resource("console.infoicon.sml");
+=======
+    min-width: 150px;
+    width: 150px;
+    max-width: 150px;
+}
+
+.unity-tilepalette-activetargets {
+    flex-direction: row;
+>>>>>>> Stashed changes
 }
 
 .unity-tilepalette-activetargets-field {
@@ -153,7 +199,10 @@
     margin-right: 1px;
     margin-top: 0;
     margin-bottom: 0;
+<<<<<<< Updated upstream
     align-items: center;
+=======
+>>>>>>> Stashed changes
 }
 
 .unity-tilepalette-activetargets-field__label {
@@ -169,8 +218,13 @@
 }
 
 .unity-tilepalette-activetargets-field__input {
+<<<<<<< Updated upstream
     min-width: 200px;
     width: 200px;
+=======
+    min-width: 190px;
+    width: 190px;
+>>>>>>> Stashed changes
     padding-left: 3px;
     padding-right: 3px;
     border-top-left-radius: 2px;
@@ -179,9 +233,19 @@
     border-bottom-right-radius: 2px;
 }
 
+<<<<<<< Updated upstream
 .unity-tilepalette-activetargets-field__warning {
     margin-left: 2px;
     margin-right: 2px;
+=======
+.unity-tilepalette-activetargets-field__input--warning {
+    min-width: 172px;
+    width: 172px;
+}
+
+.unity-tilepalette-activetargets-field__warning {
+    margin: 1px;
+>>>>>>> Stashed changes
     min-height: 16px;
     height: 16px;
     min-width: 16px;
@@ -189,7 +253,12 @@
     background-image: resource("console.warnicon.sml");
 }
 
+<<<<<<< Updated upstream
 .unity-tilepalette-brushesdropdown-toggle {
+=======
+.unity-tilepalette-brushesdropdown-toggle
+{
+>>>>>>> Stashed changes
     min-height: 16px;
     min-width: 16px;
 }
@@ -223,6 +292,7 @@
 .unity-tilepalette-brushinspectorpopup .unity-label {
     -unity-font-style: bold;
 }
+<<<<<<< Updated upstream
 
 .unity-tilepalette-splitview-brushes-toolbar {
     min-height: 24px;
@@ -396,3 +466,5 @@
     position: absolute;
     visibility: hidden;
 }
+=======
+>>>>>>> Stashed changes

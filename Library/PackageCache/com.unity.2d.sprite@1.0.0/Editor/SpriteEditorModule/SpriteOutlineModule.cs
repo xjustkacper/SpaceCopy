@@ -2,10 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+<<<<<<< Updated upstream
 using Unity.Collections;
 using UnityEditor.U2D.Sprites.SpriteEditorTool;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
+=======
+>>>>>>> Stashed changes
 
 namespace UnityEditor.U2D.Sprites
 {
@@ -193,6 +196,17 @@ namespace UnityEditor.U2D.Sprites
     {
         class Styles
         {
+<<<<<<< Updated upstream
+=======
+            public GUIContent generateOutlineLabel = EditorGUIUtility.TrTextContent("Generate", "Generate new outline based on mesh detail value.");
+            public GUIContent outlineTolerance = EditorGUIUtility.TrTextContent("Outline Tolerance", "Sets how tight the outline should be from the sprite.");
+            public GUIContent snapButtonLabel = EditorGUIUtility.TrTextContent("Snap", "Snap points to nearest pixel");
+
+            public GUIContent copyButtonLabel = EditorGUIUtility.TrTextContent("Copy", "Copy outline from Sprite");
+            public GUIContent pasteButtonLabel = EditorGUIUtility.TrTextContent("Paste", "Paste outline to Sprite");
+            public GUIContent pasteAllButtonLabel = EditorGUIUtility.TrTextContent("Paste All", "Paste outline to all Sprites");
+
+>>>>>>> Stashed changes
             public GUIContent generatingOutlineDialogTitle = EditorGUIUtility.TrTextContent("Outline");
             public GUIContent generatingOutlineDialogContent = EditorGUIUtility.TrTextContent("Generating outline {0}/{1}");
             public Color spriteBorderColor = new Color(0.25f, 0.5f, 1f, 0.75f);
@@ -208,6 +222,10 @@ namespace UnityEditor.U2D.Sprites
         private bool m_RequestRepaint;
         private Matrix4x4 m_HandleMatrix;
         private Vector2 m_MousePosition;
+<<<<<<< Updated upstream
+=======
+        private bool m_Snap = true;
+>>>>>>> Stashed changes
         private ShapeEditorRectSelectionTool m_ShapeSelectionUI;
         private bool m_WasRectSelecting = false;
         private Rect? m_SelectionRect;
@@ -216,7 +234,10 @@ namespace UnityEditor.U2D.Sprites
         protected SpriteOutlineModel m_Outline;
         private SpriteOutlineList m_CopyOutline = null;
         protected ITextureDataProvider m_TextureDataProvider;
+<<<<<<< Updated upstream
         protected SpriteOutlineToolOverlayPanel m_SpriteOutlineToolElement;
+=======
+>>>>>>> Stashed changes
 
         public SpriteOutlineModule(ISpriteEditor sem, IEventSystem es, IUndoSystem us, IAssetDatabase ad, IGUIUtility gu, IShapeEditorFactory sef, ITexture2D outlineTexture)
         {
@@ -356,7 +377,10 @@ namespace UnityEditor.U2D.Sprites
             shapeEditorDirty = true;
             SetupShapeEditor();
             spriteEditorWindow.enableMouseMoveEvent = true;
+<<<<<<< Updated upstream
             AddMainUI(spriteEditorWindow.GetMainVisualContainer());
+=======
+>>>>>>> Stashed changes
         }
 
         void GenerateOutlineIfNotExist()
@@ -399,7 +423,10 @@ namespace UnityEditor.U2D.Sprites
                 ScriptableObject.DestroyImmediate(m_Outline);
                 m_Outline = null;
             }
+<<<<<<< Updated upstream
             RemoveMainUI(spriteEditorWindow.GetMainVisualContainer());
+=======
+>>>>>>> Stashed changes
         }
 
         public override void DoMainGUI()
@@ -427,6 +454,7 @@ namespace UnityEditor.U2D.Sprites
                 spriteEditorWindow.RequestRepaint();
         }
 
+<<<<<<< Updated upstream
         protected virtual int alphaTolerance
         {
             get => SpriteOutlineModulePreference.alphaTolerance;
@@ -435,6 +463,108 @@ namespace UnityEditor.U2D.Sprites
 
         public override void DoToolbarGUI(Rect drawArea)
         {}
+=======
+        public override void DoToolbarGUI(Rect drawArea)
+        {
+            var style = styles;
+
+            Rect snapDrawArea = new Rect(drawArea.x, drawArea.y, EditorStyles.toolbarButton.CalcSize(style.snapButtonLabel).x, drawArea.height);
+            m_Snap = GUI.Toggle(snapDrawArea, m_Snap, style.snapButtonLabel, EditorStyles.toolbarButton);
+
+            using (new EditorGUI.DisabledScope(editingDisabled || m_Selected == null))
+            {
+                float totalWidth = drawArea.width - snapDrawArea.width;
+                drawArea.x = snapDrawArea.xMax;
+                drawArea.width = EditorStyles.toolbarButton.CalcSize(style.outlineTolerance).x;
+                totalWidth -= drawArea.width;
+                if (totalWidth < 0)
+                    drawArea.width += totalWidth;
+                if (drawArea.width > 0)
+                    GUI.Label(drawArea, style.outlineTolerance, EditorStyles.miniLabel);
+                drawArea.x += drawArea.width;
+
+                drawArea.width = 100;
+                totalWidth -= drawArea.width;
+                if (totalWidth < 0)
+                    drawArea.width += totalWidth;
+
+                if (drawArea.width > 0)
+                {
+                    float tesselationValue = m_Selected != null ? m_Outline[m_Selected.spriteID].tessellationDetail : 0;
+                    EditorGUI.BeginChangeCheck();
+                    float oldFieldWidth = EditorGUIUtility.fieldWidth;
+                    float oldLabelWidth = EditorGUIUtility.labelWidth;
+                    EditorGUIUtility.fieldWidth = 35;
+                    EditorGUIUtility.labelWidth = 1;
+                    tesselationValue = EditorGUI.Slider(drawArea, Mathf.Clamp01(tesselationValue), 0, 1);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        RecordUndo();
+                        m_Outline[m_Selected.spriteID].tessellationDetail = tesselationValue;
+                    }
+                    EditorGUIUtility.fieldWidth = oldFieldWidth;
+                    EditorGUIUtility.labelWidth = oldLabelWidth;
+                }
+
+                drawArea.x += drawArea.width + 2;
+                drawArea.width = EditorStyles.toolbarButton.CalcSize(style.generateOutlineLabel).x;
+                totalWidth -= drawArea.width;
+                if (totalWidth < 0)
+                    drawArea.width += totalWidth;
+
+                if (drawArea.width > 0 && GUI.Button(drawArea, style.generateOutlineLabel, EditorStyles.toolbarButton))
+                {
+                    RecordUndo();
+                    selectedShapeOutline.Clear();
+                    SetupShapeEditorOutline(m_Selected);
+                    spriteEditorWindow.SetDataModified();
+                    shapeEditorDirty = true;
+                }
+
+                using (new EditorGUI.DisabledScope(m_Selected == null || !HasShapeOutline(m_Selected)))
+                {
+                    drawArea.x += drawArea.width + 2;
+                    drawArea.width = EditorStyles.toolbarButton.CalcSize(style.copyButtonLabel).x;
+                    totalWidth -= drawArea.width;
+                    if (totalWidth < 0)
+                        drawArea.width += totalWidth;
+
+                    if (drawArea.width > 0 && GUI.Button(drawArea, style.copyButtonLabel, EditorStyles.toolbarButton))
+                    {
+                        Copy();
+                    }
+                }
+
+                using (new EditorGUI.DisabledScope(m_Selected == null || m_CopyOutline == null))
+                {
+                    drawArea.x += drawArea.width;
+                    drawArea.width = EditorStyles.toolbarButton.CalcSize(style.pasteButtonLabel).x;
+                    totalWidth -= drawArea.width;
+                    if (totalWidth < 0)
+                        drawArea.width += totalWidth;
+
+                    if (drawArea.width > 0 && GUI.Button(drawArea, style.pasteButtonLabel, EditorStyles.toolbarButton))
+                    {
+                        Paste();
+                    }
+                }
+
+                using (new EditorGUI.DisabledScope(m_CopyOutline == null))
+                {
+                    drawArea.x += drawArea.width;
+                    drawArea.width = EditorStyles.toolbarButton.CalcSize(style.pasteAllButtonLabel).x;
+                    totalWidth -= drawArea.width;
+                    if (totalWidth < 0)
+                        drawArea.width += totalWidth;
+
+                    if (drawArea.width > 0 && GUI.Button(drawArea, style.pasteAllButtonLabel, EditorStyles.toolbarButton))
+                    {
+                        PasteAll();
+                    }
+                }
+            }
+        }
+>>>>>>> Stashed changes
 
         public override void DoPostGUI()
         {}
@@ -461,9 +591,15 @@ namespace UnityEditor.U2D.Sprites
                 selectionRect.min = SnapPoint(rectOutline.min);
                 selectionRect.max = SnapPoint(rectOutline.max);
                 so.Add(CapPointToRect(new Vector2(selectionRect.xMin, selectionRect.yMin), rect) - outlineOffset);
+<<<<<<< Updated upstream
                 so.Add(CapPointToRect(new Vector2(selectionRect.xMax, selectionRect.yMin), rect) - outlineOffset);
                 so.Add(CapPointToRect(new Vector2(selectionRect.xMax, selectionRect.yMax), rect) - outlineOffset);
                 so.Add(CapPointToRect(new Vector2(selectionRect.xMin, selectionRect.yMax), rect) - outlineOffset);
+=======
+                so.Add(CapPointToRect(new Vector2(selectionRect.xMin, selectionRect.yMax), rect) - outlineOffset);
+                so.Add(CapPointToRect(new Vector2(selectionRect.xMax, selectionRect.yMax), rect) - outlineOffset);
+                so.Add(CapPointToRect(new Vector2(selectionRect.xMax, selectionRect.yMin), rect) - outlineOffset);
+>>>>>>> Stashed changes
                 selectedShapeOutline.Add(so);
                 spriteEditorWindow.SetDataModified();
                 shapeEditorDirty = true;
@@ -621,6 +757,7 @@ namespace UnityEditor.U2D.Sprites
             return outline != null;
         }
 
+<<<<<<< Updated upstream
         private void AddMainUI(VisualElement mainView)
         {
             m_SpriteOutlineToolElement = SpriteOutlineToolOverlayPanel.GenerateFromUXML();
@@ -725,12 +862,18 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+=======
+>>>>>>> Stashed changes
         protected virtual void SetupShapeEditorOutline(SpriteRect spriteRect)
         {
             var outline = m_Outline[spriteRect.spriteID];
             var outlines = GenerateSpriteRectOutline(spriteRect.rect,
                 Math.Abs(outline.tessellationDetail - (-1f)) < Mathf.Epsilon ? 0 : outline.tessellationDetail,
+<<<<<<< Updated upstream
                 (byte)(alphaTolerance), m_TextureDataProvider, m_SpriteOutlineToolElement.optimizeOutline);
+=======
+                0, m_TextureDataProvider);
+>>>>>>> Stashed changes
             if (outlines.Count == 0)
             {
                 Vector2 halfSize = spriteRect.rect.size * 0.5f;
@@ -753,7 +896,11 @@ namespace UnityEditor.U2D.Sprites
 
         public Vector3 SnapPoint(Vector3 position)
         {
+<<<<<<< Updated upstream
             if (m_SpriteOutlineToolElement.snapOn)
+=======
+            if (m_Snap)
+>>>>>>> Stashed changes
             {
                 position.x = Mathf.RoundToInt(position.x);
                 position.y = Mathf.RoundToInt(position.y);
@@ -835,7 +982,11 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+<<<<<<< Updated upstream
         protected static List<SpriteOutline> GenerateSpriteRectOutline(Rect rect, float detail, byte alphaTolerance, ITextureDataProvider textureProvider, bool useClipper)
+=======
+        protected static List<SpriteOutline> GenerateSpriteRectOutline(Rect rect, float detail, byte alphaTolerance, ITextureDataProvider textureProvider)
+>>>>>>> Stashed changes
         {
             List<SpriteOutline> outline = new List<SpriteOutline>();
             var texture = textureProvider.GetReadableTexture2D();
@@ -859,6 +1010,7 @@ namespace UnityEditor.U2D.Sprites
                 spriteRect.yMax *= scale.y;
 
                 UnityEditor.Sprites.SpriteUtility.GenerateOutline(texture, spriteRect, detail, alphaTolerance, true, out paths);
+<<<<<<< Updated upstream
                 if (useClipper)
                 {
                         Clipper2D.Solution clipperSolution = new Clipper2D.Solution();
@@ -899,6 +1051,8 @@ namespace UnityEditor.U2D.Sprites
                         pathPoints.Dispose();
                         clipperSolution.Dispose();
                 }
+=======
+>>>>>>> Stashed changes
 
                 Rect capRect = new Rect();
                 capRect.size = rect.size;
@@ -962,6 +1116,7 @@ namespace UnityEditor.U2D.Sprites
             return so;
         }
     }
+<<<<<<< Updated upstream
 
     internal class SpriteOutlineModulePreference
     {
@@ -988,4 +1143,6 @@ namespace UnityEditor.U2D.Sprites
             set { EditorPrefs.SetInt(kPhysicsAlphaTolerance, value); }
         }
     }
+=======
+>>>>>>> Stashed changes
 }

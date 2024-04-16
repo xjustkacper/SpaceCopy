@@ -1,4 +1,5 @@
 using System;
+<<<<<<< Updated upstream
 using UnityEditor.Experimental;
 using UnityEngine;
 
@@ -15,14 +16,31 @@ namespace UnityEditor.Tilemaps
 
         private static Styles s_Styles;
 
+=======
+
+namespace UnityEditor.Tilemaps
+{
+    internal class GridPalettesDropdown : FlexibleMenu
+    {
+        public GridPalettesDropdown(IFlexibleMenuItemProvider itemProvider, int selectionIndex, FlexibleMenuModifyItemUI modifyItemUi, Action<int, object> itemClickedCallback, float minWidth)
+            : base(itemProvider, selectionIndex, modifyItemUi, itemClickedCallback)
+        {
+            minTextWidth = minWidth;
+        }
+
+>>>>>>> Stashed changes
         internal class MenuItemProvider : IFlexibleMenuItemProvider
         {
             public int Count()
             {
+<<<<<<< Updated upstream
                 var count = GridPaintingState.palettes.Count + 1;
                 if (TilePaletteWhiteboxSamplesUtility.whiteboxSamples.Count > 0)
                     count += 1;
                 return count;
+=======
+                return GridPaintingState.palettes.Count + 1;
+>>>>>>> Stashed changes
             }
 
             public object GetItem(int index)
@@ -63,9 +81,13 @@ namespace UnityEditor.Tilemaps
                 if (index < GridPaintingState.palettes.Count)
                     return GridPaintingState.palettes[index].name;
                 else if (index == GridPaintingState.palettes.Count)
+<<<<<<< Updated upstream
                     return "Create New Tile Palette";
                 else if (index == GridPaintingState.palettes.Count + 1)
                     return "Create New Whitebox Tile Palette";
+=======
+                    return "Create New Palette";
+>>>>>>> Stashed changes
                 else
                     return "";
             }
@@ -80,6 +102,7 @@ namespace UnityEditor.Tilemaps
                 return new int[] { GridPaintingState.palettes.Count - 1 };
             }
         }
+<<<<<<< Updated upstream
 
         private IFlexibleMenuItemProvider m_ItemProvider;
         private FlexibleMenuModifyItemUI m_ModifyItemUI;
@@ -262,5 +285,7 @@ namespace UnityEditor.Tilemaps
             if (m_ItemHoveredCallback != null && index >= 0)
                 m_ItemHoveredCallback(index, rect);
         }
+=======
+>>>>>>> Stashed changes
     }
 }

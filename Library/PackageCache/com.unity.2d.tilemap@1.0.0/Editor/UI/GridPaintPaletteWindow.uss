@@ -34,12 +34,18 @@
     right: 24px;
 }
 
+<<<<<<< Updated upstream
 .unity-grid-paint-palette-window {
     background-color: var(--unity-colors-tab-background-checked);
 }
 
 .unity-tilepalette-activetargets {
     min-height: 30px;
+=======
+.unity-tilepalette-activetargets {
+    min-height: 30px;
+    height: 30px;
+>>>>>>> Stashed changes
     align-items: center;
     justify-content: center;
 }
@@ -63,15 +69,21 @@
 .unity-toolbar-button:checked {
     background-color: var(--unity-overlay-buttons-on-color);
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 .unity-toolbar-button:active {
     background-color: var(--unity-colors-button-background-pressed);
 }
 
+<<<<<<< Updated upstream
 .unity-toolbar-toggle:checked {
     background-color: var(--unity-overlay-buttons-on-color);
 }
 
+=======
+>>>>>>> Stashed changes
 .unity-editor-toolbar__button-strip-element {
     left: 0;
     margin-right: 1px;

@@ -7,11 +7,15 @@ namespace UnityEditor.Tilemaps
     {
         private static class Styles
         {
+<<<<<<< Updated upstream
             public static readonly string rectangularCreateUndo = L10n.Tr("Create Tilemap");
+=======
+>>>>>>> Stashed changes
             public static readonly string pointTopHexagonCreateUndo = L10n.Tr("Hexagonal Point Top Tilemap");
             public static readonly string flatTopHexagonCreateUndo = L10n.Tr("Hexagonal Flat Top Tilemap");
             public static readonly string isometricCreateUndo = L10n.Tr("Isometric Tilemap");
             public static readonly string isometricZAsYCreateUndo = L10n.Tr("Isometric Z As Y Tilemap");
+<<<<<<< Updated upstream
             public static readonly string copyFromTilePaletteUndo = L10n.Tr("Tilemap with Tile Palette Settings");
 
             public static readonly string modifyExistingGridTitle = L10n.Tr("Modify existing Grid");
@@ -177,6 +181,52 @@ namespace UnityEditor.Tilemaps
             if (!valid)
                 return null;
 
+=======
+        }
+
+        const int k_MenuPriority = 3;
+
+        [MenuItem("GameObject/2D Object/Tilemap/Rectangular", priority = k_MenuPriority)]
+        internal static void CreateRectangularTilemap()
+        {
+            var root = FindOrCreateRootGrid();
+            var uniqueName = GameObjectUtility.GetUniqueNameForSibling(root.transform, "Tilemap");
+            var tilemapGO = ObjectFactory.CreateGameObject(uniqueName, typeof(Tilemap), typeof(TilemapRenderer));
+            Undo.SetTransformParent(tilemapGO.transform, root.transform, "");
+            tilemapGO.transform.position = Vector3.zero;
+
+            Selection.activeGameObject = tilemapGO;
+            Undo.SetCurrentGroupName("Create Tilemap");
+        }
+
+        [MenuItem("GameObject/2D Object/Tilemap/Hexagonal - Pointed-Top", priority = k_MenuPriority)]
+        internal static void CreateHexagonalPointTopTilemap()
+        {
+            CreateHexagonalTilemap(GridLayout.CellSwizzle.XYZ, Styles.pointTopHexagonCreateUndo, new Vector3(0.8659766f, 1, 1));
+        }
+
+        [MenuItem("GameObject/2D Object/Tilemap/Hexagonal - Flat-Top", priority = k_MenuPriority)]
+        internal static void CreateHexagonalFlatTopTilemap()
+        {
+            CreateHexagonalTilemap(GridLayout.CellSwizzle.YXZ, Styles.flatTopHexagonCreateUndo, new Vector3(0.8659766f, 1, 1));
+        }
+
+        [MenuItem("GameObject/2D Object/Tilemap/Isometric", priority = k_MenuPriority)]
+        internal static void CreateIsometricTilemap()
+        {
+            CreateIsometricTilemap(GridLayout.CellLayout.Isometric, Styles.isometricCreateUndo);
+        }
+
+        [MenuItem("GameObject/2D Object/Tilemap/Isometric Z as Y", priority = k_MenuPriority)]
+        internal static void CreateIsometricZAsYTilemap()
+        {
+            CreateIsometricTilemap(GridLayout.CellLayout.IsometricZAsY, Styles.isometricZAsYCreateUndo);
+        }
+
+        private static void CreateIsometricTilemap(GridLayout.CellLayout isometricLayout, string undoMessage)
+        {
+            var root = FindOrCreateRootGrid();
+>>>>>>> Stashed changes
             var uniqueName = GameObjectUtility.GetUniqueNameForSibling(root.transform, "Tilemap");
             var tilemapGO = ObjectFactory.CreateGameObject(uniqueName, typeof(Tilemap), typeof(TilemapRenderer));
             tilemapGO.transform.SetParent(root.transform);
@@ -186,7 +236,10 @@ namespace UnityEditor.Tilemaps
             // Case 1071703: Do not reset cell size if adding a new Tilemap to an existing Grid of the same layout
             if (isometricLayout != grid.cellLayout)
             {
+<<<<<<< Updated upstream
                 Undo.RecordObject(grid, undoMessage);
+=======
+>>>>>>> Stashed changes
                 grid.cellLayout = isometricLayout;
                 grid.cellSize = new Vector3(1.0f, 0.5f, 1.0f);
             }
@@ -194,6 +247,7 @@ namespace UnityEditor.Tilemaps
             var tilemapRenderer = tilemapGO.GetComponent<TilemapRenderer>();
             tilemapRenderer.sortOrder = TilemapRenderer.SortOrder.TopRight;
 
+<<<<<<< Updated upstream
             GridPaintingState.FlushCache();
             Selection.activeObject = tilemapGO;
             Undo.RegisterCreatedObjectUndo(tilemapGO, undoMessage);
@@ -206,18 +260,32 @@ namespace UnityEditor.Tilemaps
             if (!valid)
                 return null;
 
+=======
+            Selection.activeGameObject = tilemapGO;
+            Undo.RegisterCreatedObjectUndo(tilemapGO, undoMessage);
+        }
+
+        private static void CreateHexagonalTilemap(GridLayout.CellSwizzle swizzle, string undoMessage, Vector3 cellSize)
+        {
+            var root = FindOrCreateRootGrid();
+>>>>>>> Stashed changes
             var uniqueName = GameObjectUtility.GetUniqueNameForSibling(root.transform, "Tilemap");
             var tilemapGO = ObjectFactory.CreateGameObject(uniqueName, typeof(Tilemap), typeof(TilemapRenderer));
             tilemapGO.transform.SetParent(root.transform);
             tilemapGO.transform.position = Vector3.zero;
+<<<<<<< Updated upstream
 
             var grid = root.GetComponent<Grid>();
             Undo.RecordObject(grid, undoMessage);
+=======
+            var grid = root.GetComponent<Grid>();
+>>>>>>> Stashed changes
             grid.cellLayout = Grid.CellLayout.Hexagon;
             grid.cellSwizzle = swizzle;
             grid.cellSize = cellSize;
             var tilemap = tilemapGO.GetComponent<Tilemap>();
             tilemap.tileAnchor = Vector3.zero;
+<<<<<<< Updated upstream
 
             GridPaintingState.FlushCache();
             Selection.activeObject = tilemapGO;
@@ -257,6 +325,15 @@ namespace UnityEditor.Tilemaps
             , out GameObject gridGO)
         {
             gridGO = null;
+=======
+            Selection.activeGameObject = tilemapGO;
+            Undo.RegisterCreatedObjectUndo(tilemapGO, undoMessage);
+        }
+
+        private static GameObject FindOrCreateRootGrid()
+        {
+            GameObject gridGO = null;
+>>>>>>> Stashed changes
 
             // Check if active object has a Grid and can be a parent for the Tile Map
             if (Selection.activeObject is GameObject)
@@ -265,6 +342,7 @@ namespace UnityEditor.Tilemaps
                 var parentGrid = go.GetComponentInParent<Grid>();
                 if (parentGrid != null)
                 {
+<<<<<<< Updated upstream
                     if (showDialog
                         && Application.isHumanControllingUs
                         && !Application.isBatchMode
@@ -279,10 +357,16 @@ namespace UnityEditor.Tilemaps
                         if (!option)
                             return false;
                     }
+=======
+>>>>>>> Stashed changes
                     gridGO = parentGrid.gameObject;
                 }
             }
 
+<<<<<<< Updated upstream
+=======
+            // If neither the active object nor its parent has a grid, create a grid for the tilemap
+>>>>>>> Stashed changes
             if (gridGO == null)
             {
                 gridGO = ObjectFactory.CreateGameObject("Grid", typeof(Grid));
@@ -292,7 +376,12 @@ namespace UnityEditor.Tilemaps
                 grid.cellSize = new Vector3(1.0f, 1.0f, 0.0f);
                 Undo.SetCurrentGroupName("Create Grid");
             }
+<<<<<<< Updated upstream
             return true;
+=======
+
+            return gridGO;
+>>>>>>> Stashed changes
         }
     }
 }

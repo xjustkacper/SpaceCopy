@@ -20,7 +20,10 @@ namespace UnityEditor.Tilemaps
             public static readonly GUIContent spriteLabel = EditorGUIUtility.TrTextContent("Sprite", "Sprite set when tile is set in tilemap");
             public static readonly GUIContent colorLabel = EditorGUIUtility.TrTextContent("Color", "Color set when tile is set in tilemap");
             public static readonly GUIContent colliderTypeLabel = EditorGUIUtility.TrTextContent("Collider Type", "Collider shape used for tile");
+<<<<<<< Updated upstream
             public static readonly GUIContent gameObjectToInstantiateLabel = EditorGUIUtility.TrTextContent("GameObject to Instantiate", "GameObject to instantiate for tile");
+=======
+>>>>>>> Stashed changes
             public static readonly GUIContent lockColorLabel = EditorGUIUtility.TrTextContent("Lock Color", "Prevents tilemap from changing color of tile");
             public static readonly GUIContent lockTransformLabel = EditorGUIUtility.TrTextContent("Lock Transform", "Prevents tilemap from changing transform of tile");
             public static readonly GUIContent gridSelectionPropertiesLabel = EditorGUIUtility.TrTextContent("Grid Selection Properties");
@@ -103,6 +106,7 @@ namespace UnityEditor.Tilemaps
         private class GridBrushProperties
         {
             public static readonly GUIContent floodFillPreviewLabel = EditorGUIUtility.TrTextContent("Show Flood Fill Preview", "Whether a preview is shown while painting a Tilemap when Flood Fill mode is enabled");
+<<<<<<< Updated upstream
             public static readonly GUIContent floodFillPreviewFillExtentsLabel = EditorGUIUtility.TrTextContent("Flood Fill Preview Fill Extents", "Extents from the selected position when flood filling with a Tile. Set this to 0 to flood fill to the full extents.");
             public static readonly GUIContent floodFillPreviewEraseExtentsLabel = EditorGUIUtility.TrTextContent("Flood Fill Preview Erase Extents", "Extents from the selected position when flood filling without a Tile. Set this to 0 to flood erase to the full extents.");
             public static readonly string floodFillPreviewEditorPref = "GridBrush.EnableFloodFillPreview";
@@ -126,6 +130,9 @@ namespace UnityEditor.Tilemaps
         {
             get => Math.Max(0, EditorPrefs.GetInt(GridBrushProperties.floodFillPreviewEraseExtentsEditorPref, 0));
             set => EditorPrefs.SetInt(GridBrushProperties.floodFillPreviewEraseExtentsEditorPref, Math.Max(0, value));
+=======
+            public static readonly string floodFillPreviewEditorPref = "GridBrush.EnableFloodFillPreview";
+>>>>>>> Stashed changes
         }
 
         /// <summary>The GridBrush that is the target for this editor.</summary>
@@ -145,7 +152,10 @@ namespace UnityEditor.Tilemaps
         private TileFlags[] m_SelectionFlagsArray;
         private Sprite[] m_SelectionSprites;
         private Tile.ColliderType[] m_SelectionColliderTypes;
+<<<<<<< Updated upstream
         private GameObject[] m_SelectionGameObjectToInstantiate;
+=======
+>>>>>>> Stashed changes
         private int selectionCellCount => Math.Abs(GridSelection.position.size.x * GridSelection.position.size.y * GridSelection.position.size.z);
 
         // These are used to handle insert/delete cells on the Tilemap
@@ -155,10 +165,16 @@ namespace UnityEditor.Tilemaps
         private Texture2D m_Icon;
 
         private static GridSelectionTool[] s_GridSelectionTools;
+<<<<<<< Updated upstream
         private static Tile s_EmptySpriteTile;
 
         /// <summary>
         /// Initializes the GridBrushEditor.
+=======
+
+        /// <summary>
+        /// Initialises the GridBrushEditor.
+>>>>>>> Stashed changes
         /// </summary>
         protected virtual void OnEnable()
         {
@@ -174,12 +190,15 @@ namespace UnityEditor.Tilemaps
                     CreateInstance<GridSelectionTransformTool>()
                 };
             }
+<<<<<<< Updated upstream
 
             if (s_EmptySpriteTile == null)
             {
                 s_EmptySpriteTile = ScriptableObject.CreateInstance<Tile>();
                 s_EmptySpriteTile.sprite = null;
             }
+=======
+>>>>>>> Stashed changes
         }
 
         /// <summary>
@@ -231,10 +250,13 @@ namespace UnityEditor.Tilemaps
                     {
                         PaintPreview(gridLayout, brushTarget, position.min);
                     }
+<<<<<<< Updated upstream
                     else
                     {
                         ErasePreview(gridLayout, brushTarget, position.min);
                     }
+=======
+>>>>>>> Stashed changes
                 }
                 gizmoRect = new BoundsInt(position.min - brush.pivot, brush.size);
             }
@@ -271,7 +293,10 @@ namespace UnityEditor.Tilemaps
                 m_SelectionFlagsArray = new TileFlags[cellCount];
                 m_SelectionSprites = new Sprite[cellCount];
                 m_SelectionColliderTypes = new Tile.ColliderType[cellCount];
+<<<<<<< Updated upstream
                 m_SelectionGameObjectToInstantiate = new GameObject[cellCount];
+=======
+>>>>>>> Stashed changes
             }
 
             int index = 0;
@@ -283,7 +308,10 @@ namespace UnityEditor.Tilemaps
                 m_SelectionFlagsArray[index] = tilemap.GetTileFlags(p);
                 m_SelectionSprites[index] = tilemap.GetSprite(p);
                 m_SelectionColliderTypes[index] = tilemap.GetColliderType(p);
+<<<<<<< Updated upstream
                 m_SelectionGameObjectToInstantiate[index] = tilemap.GetObjectToInstantiate(p);
+=======
+>>>>>>> Stashed changes
                 index++;
             }
         }
@@ -349,10 +377,15 @@ namespace UnityEditor.Tilemaps
                 {
                     EditorGUI.showMixedValue = m_SelectionColliderTypes.Any(colliderType => colliderType != m_SelectionColliderTypes.First());
                     EditorGUILayout.EnumPopup(Styles.colliderTypeLabel, m_SelectionColliderTypes[0]);
+<<<<<<< Updated upstream
                     EditorGUI.showMixedValue = m_SelectionGameObjectToInstantiate.Any(gameObject => gameObject != m_SelectionGameObjectToInstantiate.First());
                     EditorGUILayout.ObjectField(Styles.gameObjectToInstantiateLabel, m_SelectionGameObjectToInstantiate[0], typeof(GameObject), false);
                 }
                 
+=======
+                }
+
+>>>>>>> Stashed changes
                 bool transformFlagsAllEqual = m_SelectionFlagsArray.All(flags => (flags & TileFlags.LockTransform) == (m_SelectionFlagsArray.First() & TileFlags.LockTransform));
                 using (new EditorGUI.DisabledScope(!transformFlagsAllEqual || (m_SelectionFlagsArray[0] & TileFlags.LockTransform) != 0))
                 {
@@ -508,6 +541,7 @@ namespace UnityEditor.Tilemaps
             set { brush.canChangeZPosition = value; }
         }
 
+<<<<<<< Updated upstream
         /// <summary>
         /// Whether the Brush is in a state that should be saved for selection.
         /// </summary>
@@ -526,6 +560,8 @@ namespace UnityEditor.Tilemaps
                 return false;
             }
         }
+=======
+>>>>>>> Stashed changes
         /// <summary>Callback for registering an Undo action before the GridBrushBase does the current GridBrushBase::ref::Tool action.</summary>
         /// <param name="brushTarget">Target of the GridBrushBase::ref::Tool operation. By default the currently selected GameObject.</param>
         /// <param name="tool">Current GridBrushBase::ref::Tool selected.</param>
@@ -560,6 +596,7 @@ namespace UnityEditor.Tilemaps
         }
 
         /// <summary>Paints preview data into a cell of a grid given the coordinates of the cell.</summary>
+<<<<<<< Updated upstream
         /// <param name="gridLayout">The grid to paint data to.</param>
         /// <param name="brushTarget">The target of the paint operation. This is the currently selected GameObject by default.</param>
         /// <param name="position">The coordinates of the cell to paint data to.</param>
@@ -583,6 +620,28 @@ namespace UnityEditor.Tilemaps
                         {
                             SetTilemapPreviewCell(map, location, cell.tile, cell.matrix, cell.color);
                         }
+=======
+        /// <param name="gridLayout">Grid to paint data to.</param>
+        /// <param name="brushTarget">Target of the paint operation. By default the currently selected GameObject.</param>
+        /// <param name="position">The coordinates of the cell to paint data to.</param>
+        /// <remarks>The grid brush will paint preview sprites in its brush cells onto an associated Tilemap. This will not instantiate objects associated with the painted tiles.</remarks>
+        public virtual void PaintPreview(GridLayout gridLayout, GameObject brushTarget, Vector3Int position)
+        {
+            Vector3Int min = position - brush.pivot;
+            Vector3Int max = min + brush.size;
+            BoundsInt bounds = new BoundsInt(min, max - min);
+
+            if (brushTarget != null)
+            {
+                Tilemap map = brushTarget.GetComponent<Tilemap>();
+                foreach (Vector3Int location in bounds.allPositionsWithin)
+                {
+                    Vector3Int brushPosition = location - min;
+                    GridBrush.BrushCell cell = brush.cells[brush.GetCellIndex(brushPosition)];
+                    if (cell.tile != null && map != null)
+                    {
+                        SetTilemapPreviewCell(map, location, cell.tile, cell.matrix, cell.color);
+>>>>>>> Stashed changes
                     }
                 }
             }
@@ -593,6 +652,7 @@ namespace UnityEditor.Tilemaps
             m_LastTool = GridBrushBase.Tool.Paint;
         }
 
+<<<<<<< Updated upstream
         /// <summary>Displays a preview of the Tile (after erasure) on the cell of a grid at the given coordinates of the cell.</summary>
         /// <param name="gridLayout">The grid to paint data to.</param>
         /// <param name="brushTarget">The target of the erase operation. This is the currently selected GameObject by default.</param>
@@ -624,6 +684,8 @@ namespace UnityEditor.Tilemaps
             m_LastTool = GridBrushBase.Tool.Erase;
         }
 
+=======
+>>>>>>> Stashed changes
         /// <summary>Does a preview of what happens when a GridBrush.BoxFill is done with the same parameters.</summary>
         /// <param name="gridLayout">Grid to box fill data to.</param>
         /// <param name="brushTarget">Target of box fill operation. By default the currently selected GameObject.</param>
@@ -632,6 +694,7 @@ namespace UnityEditor.Tilemaps
         {
             if (brushTarget != null)
             {
+<<<<<<< Updated upstream
                 var map = brushTarget.GetComponent<Tilemap>();
                 if (map != null)
                 {
@@ -639,6 +702,15 @@ namespace UnityEditor.Tilemaps
                     {
                         var local = location - position.min;
                         var cell = brush.cells[brush.GetCellIndexWrapAround(local.x, local.y, local.z)];
+=======
+                Tilemap map = brushTarget.GetComponent<Tilemap>();
+                if (map != null)
+                {
+                    foreach (Vector3Int location in position.allPositionsWithin)
+                    {
+                        Vector3Int local = location - position.min;
+                        GridBrush.BrushCell cell = brush.cells[brush.GetCellIndexWrapAround(local.x, local.y, local.z)];
+>>>>>>> Stashed changes
                         if (cell.tile != null)
                         {
                             SetTilemapPreviewCell(map, location, cell.tile, cell.matrix, cell.color);
@@ -660,6 +732,7 @@ namespace UnityEditor.Tilemaps
                 && m_LastBounds.HasValue && m_LastBounds.Value.Contains(position)
                 && brushTarget != null && brush.cellCount > 0)
             {
+<<<<<<< Updated upstream
                 var map = brushTarget.GetComponent<Tilemap>();
                 if (map != null)
                 {
@@ -667,6 +740,13 @@ namespace UnityEditor.Tilemaps
                     var hasTile = cell.tile != null;
                     if ((hasTile && floodFillPreviewFillExtents == 0 || !hasTile && floodFillPreviewEraseExtents == 0)
                         && (cell.tile == map.GetEditorPreviewTile(position)))
+=======
+                Tilemap map = brushTarget.GetComponent<Tilemap>();
+                if (map != null)
+                {
+                    GridBrush.BrushCell cell = brush.cells[0];
+                    if (cell.tile == map.GetEditorPreviewTile(position))
+>>>>>>> Stashed changes
                         return false;
                 }
             }
@@ -680,12 +760,17 @@ namespace UnityEditor.Tilemaps
         public virtual void FloodFillPreview(GridLayout gridLayout, GameObject brushTarget, Vector3Int position)
         {
             // This can be quite taxing on a large Tilemap, so users can choose whether to do this or not
+<<<<<<< Updated upstream
             if (!showFloodFillPreview)
+=======
+            if (!EditorPrefs.GetBool(GridBrushProperties.floodFillPreviewEditorPref, true))
+>>>>>>> Stashed changes
                 return;
 
             var bounds = new BoundsInt(position, Vector3Int.one);
             if (brushTarget != null && brush.cellCount > 0)
             {
+<<<<<<< Updated upstream
                 var map = brushTarget.GetComponent<Tilemap>();
                 if (map != null)
                 {
@@ -707,6 +792,13 @@ namespace UnityEditor.Tilemaps
                         map.EditorPreviewFloodFill(position, floodFillTile);
                     }
 
+=======
+                Tilemap map = brushTarget.GetComponent<Tilemap>();
+                if (map != null)
+                {
+                    GridBrush.BrushCell cell = brush.cells[0];
+                    map.EditorPreviewFloodFill(position, cell.tile);
+>>>>>>> Stashed changes
                     // Set floodfill bounds as tilemap bounds
                     var origin = map.origin;
                     bounds.min = origin;
@@ -737,6 +829,7 @@ namespace UnityEditor.Tilemaps
             using (new SettingsWindow.GUIScope())
             {
                 EditorGUI.BeginChangeCheck();
+<<<<<<< Updated upstream
                 var val = EditorGUILayout.Toggle(GridBrushProperties.floodFillPreviewLabel, showFloodFillPreview);
                 if (EditorGUI.EndChangeCheck())
                 {
@@ -759,6 +852,13 @@ namespace UnityEditor.Tilemaps
                     }
                 }
                 EditorGUI.indentLevel--;
+=======
+                var val = EditorGUILayout.Toggle(GridBrushProperties.floodFillPreviewLabel, EditorPrefs.GetBool(GridBrushProperties.floodFillPreviewEditorPref, true));
+                if (EditorGUI.EndChangeCheck())
+                {
+                    EditorPrefs.SetBool(GridBrushProperties.floodFillPreviewEditorPref, val);
+                }
+>>>>>>> Stashed changes
             }
         }
 
@@ -789,7 +889,10 @@ namespace UnityEditor.Tilemaps
                         }
                         break;
                     }
+<<<<<<< Updated upstream
                     case GridBrushBase.Tool.Erase:
+=======
+>>>>>>> Stashed changes
                     case GridBrushBase.Tool.Paint:
                     {
                         BoundsInt bounds = m_LastBounds.Value;
@@ -808,6 +911,7 @@ namespace UnityEditor.Tilemaps
             m_LastTool = null;
         }
 
+<<<<<<< Updated upstream
         /// <summary>
         /// Creates a static preview of the GridBrush with its current selection.
         /// </summary>
@@ -861,6 +965,8 @@ namespace UnityEditor.Tilemaps
             return tex;
         }
 
+=======
+>>>>>>> Stashed changes
         private void RegisterUndoForTilemap(Tilemap tilemap, string undoMessage)
         {
             Undo.RegisterCompleteObjectUndo(new Object[] { tilemap, tilemap.gameObject }, undoMessage);

@@ -11,7 +11,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = "|Pick or marquee select new brush ({0})";
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_Picker;
+=======
+            public static string shortcutId = "Grid Painting/Picker";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Grid.PickingTool", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 

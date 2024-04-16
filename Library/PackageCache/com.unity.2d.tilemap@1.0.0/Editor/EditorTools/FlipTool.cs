@@ -53,7 +53,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = L10n.Tr("|Flips the contents of the brush in the X Axis. ({0})");
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_FlipX;
+=======
+            public static string shortcutId = "Grid Painting/Flip X";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Packages/com.unity.2d.tilemap/Editor/Icons/Grid.FlipX.png", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 
@@ -98,7 +102,11 @@ namespace UnityEditor.Tilemaps
         private static class Styles
         {
             public static string tooltipStringFormat = L10n.Tr("|Flips the contents of the brush in the Y axis. ({0})");
+<<<<<<< Updated upstream
             public static string shortcutId = GridPaintPaletteWindow.ShortcutIds.k_FlipY;
+=======
+            public static string shortcutId = "Grid Painting/Flip Y";
+>>>>>>> Stashed changes
             public static GUIContent toolContent = EditorGUIUtility.IconContent("Packages/com.unity.2d.tilemap/Editor/Icons/Grid.FlipY.png", GetTooltipText(tooltipStringFormat, shortcutId));
         }
 
